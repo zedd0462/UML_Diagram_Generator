@@ -13,15 +13,15 @@ public class Examples {
 
 	public void exp01() {
 		try {
-			ProjectExplorer explorer = new ProjectExplorer("C:/repos/Java_MQL/Fadel Abdelhamid - StringMapper/bin");
+			ProjectExplorer explorer = new ProjectExplorer("C:/Users/Abdelhamid/git/UMLGen/Fadel Abdelhamid - UML Diagrams Generator/bin");
 			List<Class<?>> classList = explorer.getLoadedClasses();
-			System.out.println("Classes---------------------");
+			System.out.println("--Classes----------------------");
 			for (Class<?> clazz : classList) {
 				System.out.println(clazz.getName());
 			}
-			Package[] packages = explorer.getClassloader().getDefinedPackages();
-			System.out.println("Packages---------------------");
-			for (Package pkg : packages) {
+			List<Package> packageList = explorer.getLoadedPackages();
+			System.out.println("--Packages---------------------");
+			for (Package pkg : packageList) {
 				System.out.println(pkg.getName());
 			}
 		} catch (Exception e) {
