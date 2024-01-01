@@ -33,6 +33,10 @@ public class ProjectExplorer {
 		}
 	}
 	
+	/**
+	 * Explores all subfiles and subdirectories of the project for .class files
+	 * @throws ClassNotFoundException
+	 */
 	private void explore() throws ClassNotFoundException{
 		explore(this.projectRoot);
 	}
@@ -40,6 +44,7 @@ public class ProjectExplorer {
 	/**
 	 * Explores all subfiles and subdirectories for .class files
 	 * @param file The root of the Java project that contains .class files
+	 * @throws ClassNotFoundException
 	 */
 	private void explore(File file) throws ClassNotFoundException{
 		File[] content = file.listFiles();
