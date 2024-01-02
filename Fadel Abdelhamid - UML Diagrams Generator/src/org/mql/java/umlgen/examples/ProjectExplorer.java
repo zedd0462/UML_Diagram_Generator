@@ -1,4 +1,4 @@
-package org.mql.java.umlgen;
+package org.mql.java.umlgen.examples;
 
 import java.io.File;
 import java.net.URL;

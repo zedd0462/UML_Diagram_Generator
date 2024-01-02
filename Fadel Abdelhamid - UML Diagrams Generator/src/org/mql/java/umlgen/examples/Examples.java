@@ -1,4 +1,4 @@
-package org.mql.java.umlgen;
+package org.mql.java.umlgen.examples;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
