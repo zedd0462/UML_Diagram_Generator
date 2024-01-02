@@ -2,25 +2,25 @@ package org.mql.java.umlgen.xml;
 
 public class XMLAttribute {
 	
-	private String attributeName;
-	private String attributeValue;
+	private String name;
+	private String value;
 	
 	protected XMLAttribute() {
 		
 	}
 	
-	public XMLAttribute(String attributeName, String attributeValue) {
+	public XMLAttribute(String name, String value) {
 		super();
-		this.attributeName = attributeName;
-		this.attributeValue = attributeValue;
+		this.name = name;
+		this.value = value;
 	}
 	
-	public String getAttributeName() {
-		return attributeName;
+	public String getName() {
+		return name;
 	}
 	
-	public String getAttributeValue() {
-		return attributeValue;
+	public String getValue() {
+		return value;
 	}
 
 }
