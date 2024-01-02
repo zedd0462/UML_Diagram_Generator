@@ -7,15 +7,13 @@ import org.mql.java.umlgen.annotations.SimpleElement;
 import org.mql.java.umlgen.xml.XMLElement;
 import org.mql.java.umlgen.xml.XMLElementGenerator;
 
-@ComplexElement("parameter")
+@ComplexElement(value="parameter")
 public class ParameterModel implements UMLModelEntity {
 	
 	private String type;
-	private String shortType;
 	private String name;
 
 	public ParameterModel(Parameter parameter) {
-		this.shortType = parameter.getType().getSimpleName();
 		this.type = parameter.getType().getName();
 		this.name = parameter.getName();
 	}
@@ -25,17 +23,13 @@ public class ParameterModel implements UMLModelEntity {
 		return generator.generate(this);
 	}
 	
-	@SimpleElement("type")
+	@SimpleElement(value="type", order=2)
 	public String getType() {
 		return type;
 	}
+
 	
-	@SimpleElement("short-type")
-	public String getShortType() {
-		return shortType;
-	}
-	
-	@SimpleElement("name")
+	@SimpleElement(value="name", order=1)
 	public String getName() {
 		return name;
 	}
