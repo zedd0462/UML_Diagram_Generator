@@ -5,8 +5,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Represents content that will be represented with an {@code XMLElement}
+ * with simple content, the name of the tag will be in the attribute 
+ * {@code value}. 
+ * This annotation should be on a getter that returns a String.
+ */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.FIELD, ElementType.METHOD })
+@Target(ElementType.METHOD)
 public @interface SimpleElement {
 	String value();
+	int order() default 0;
 }
