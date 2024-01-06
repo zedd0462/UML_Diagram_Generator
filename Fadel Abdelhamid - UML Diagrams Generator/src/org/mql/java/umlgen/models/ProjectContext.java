@@ -1,15 +1,17 @@
 package org.mql.java.umlgen.models;
 
 import java.net.URLClassLoader;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 public class ProjectContext {
 
 	private ProjectModel currentProject;
-	private List<ClassModel> loadedClasses;
-	private List<InterfaceModel> loadedInterfaces;
-	private List<AnnotationModel> loadedAnnotations;
+	private Map<Class<?>, ClassModel> loadedClasses;
+	private Map<Class<?>, InterfaceModel> loadedInterfaces;
+	private Map<Class<?>, AnnotationModel> loadedAnnotations;
 	private List<RelationModel> relations;
 	
 	private URLClassLoader classloader;
@@ -17,22 +19,22 @@ public class ProjectContext {
 
 	public ProjectContext(ProjectModel currentProject) {
 		this.currentProject = currentProject;
-		loadedClasses = new Vector<ClassModel>();
+		loadedClasses = new Hashtable<Class<?>, ClassModel>();
 		relations = new Vector<RelationModel>();
-		loadedInterfaces = new Vector<InterfaceModel>();
-		loadedAnnotations = new Vector<AnnotationModel>();
+		loadedInterfaces = new Hashtable<Class<?>, InterfaceModel>();
+		loadedAnnotations = new Hashtable<Class<?>, AnnotationModel>();
 	}
 	
 	public void addClass(ClassModel clazz) {
-		loadedClasses.add(clazz);
+		loadedClasses.put(clazz.getReflectClass(),clazz);
 	}
 
 	public void addInterface(InterfaceModel interf) {
-		loadedInterfaces.add(interf);
+		loadedInterfaces.put(interf.getReflectClass(), interf);
 	}
 
 	public void addAnnotation(AnnotationModel annotation) {
-		loadedAnnotations.add(annotation);
+		loadedAnnotations.put(annotation.getReflectClass(), annotation);
 	}
 	
 	public void addRelation(RelationModel relation) {
@@ -43,7 +45,7 @@ public class ProjectContext {
 		return currentProject;
 	}
 	
-	public List<ClassModel> getLoadedClasses() {
+	public Map<Class<?>, ClassModel> getLoadedClasses() {
 		return loadedClasses;
 	}
 	
@@ -59,15 +61,29 @@ public class ProjectContext {
 		return classloader;
 	}
 
-	public List<InterfaceModel> getLoadedInterfaces() {
+	public Map<Class<?>, InterfaceModel> getLoadedInterfaces() {
 		return loadedInterfaces;
 	}
 
-	public List<AnnotationModel> getLoadedAnnotations() {
+	public Map<Class<?>, AnnotationModel> getLoadedAnnotations() {
 		return loadedAnnotations;
 	}
 	
+	public boolean isLoaded(Class<?> clazz) {
+		return loadedClasses.containsKey(clazz);
+	}
 	
+	public ClassModel getLoadedClassModel(Class<?> clazz) {
+		return loadedClasses.get(clazz);
+	}
+
+	public InterfaceModel getLoadedInterfaceModel(Class<?> clazz) {
+		return loadedInterfaces.get(clazz);
+	}
+
+	public AnnotationModel getLoadedAnnotationModel(Class<?> clazz) {
+		return loadedAnnotations.get(clazz);
+	}
 	
 
 }

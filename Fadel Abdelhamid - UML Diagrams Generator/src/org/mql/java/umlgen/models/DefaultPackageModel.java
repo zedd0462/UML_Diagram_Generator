@@ -38,7 +38,7 @@ public class DefaultPackageModel extends PackageModel {
 						} else if (clazz.isInterface()) {
 							interfaces.add(new InterfaceModel(clazz));
 						} else {
-							classes.add(new ClassModel(clazz));
+							classes.add(new ClassModel(projectContext, clazz));
 						}
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();

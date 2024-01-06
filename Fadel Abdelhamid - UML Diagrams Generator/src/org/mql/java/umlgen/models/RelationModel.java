@@ -18,6 +18,18 @@ public class RelationModel implements UMLModelEntity {
 		this.relationType = relationType;
 	}
 
+	public RelationModel(ClassModel sourceClass, ClassModel targetClass, String relationType) {
+		this.sourceClass = sourceClass.getName();
+		this.targetClass = targetClass.getName();
+		this.relationType = relationType;
+	}
+
+	public RelationModel(ClassModel sourceClass, ClassModel targetClass) {
+		this.sourceClass = sourceClass.getName();
+		this.targetClass = targetClass.getName();
+		this.relationType = "Unspecified";
+	}
+
 	@Override
 	public XMLElement getElementModel(XMLElementGenerator generator) {
 		return generator.generate(this);

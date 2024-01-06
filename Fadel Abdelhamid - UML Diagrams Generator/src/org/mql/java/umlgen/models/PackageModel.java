@@ -66,7 +66,7 @@ public class PackageModel implements UMLModelEntity{
 							interfaces.add(model);
 							projectContext.addInterface(model);
 						} else {
-							ClassModel model = new ClassModel(clazz);
+							ClassModel model = new ClassModel(projectContext ,clazz);
 							classes.add(model);
 							projectContext.addClass(model);
 						}

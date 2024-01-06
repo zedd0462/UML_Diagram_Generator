@@ -15,10 +15,12 @@ public class AnnotationModel implements UMLModelEntity{
 	//TODO finish this
 	private String name;
 	private List<MethodModel> methods;
+	private Class<?> reflectClass;
 	
 
 
 	public AnnotationModel(Class<?> annotation) {
+		this.reflectClass = annotation;
 		this.name = annotation.getName();
 		methods = new Vector<MethodModel>();
 		for (Method m : annotation.getMethods()) {
@@ -39,5 +41,9 @@ public class AnnotationModel implements UMLModelEntity{
 	@ComplexElement(value="methods", order=2)
 	public List<MethodModel> getMethods() {
 		return methods;
+	}
+	
+	public Class<?> getReflectClass() {
+		return reflectClass;
 	}
 }

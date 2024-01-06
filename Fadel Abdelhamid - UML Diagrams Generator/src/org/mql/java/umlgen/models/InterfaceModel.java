@@ -18,9 +18,11 @@ public class InterfaceModel implements UMLModelEntity{
 	private String superclass;
 	private List<MethodModel> methods;
 	private List<FieldModel> fields;
+	private Class<?> reflectClass;
 	
 
 	public InterfaceModel(Class<?> interf) {
+		this.reflectClass = interf;
 		methods = new Vector<MethodModel>();
 		fields = new Vector<FieldModel>();
 		this.name = interf.getName();
@@ -61,6 +63,10 @@ public class InterfaceModel implements UMLModelEntity{
 	@ComplexElement(value="methods", order=4)
 	public List<MethodModel> getMethods() {
 		return methods;
+	}
+	
+	public Class<?> getReflectClass() {
+		return reflectClass;
 	}
 
 }

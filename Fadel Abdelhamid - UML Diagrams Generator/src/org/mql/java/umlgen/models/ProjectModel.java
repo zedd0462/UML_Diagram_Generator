@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
@@ -59,11 +60,20 @@ public class ProjectModel implements UMLModelEntity{
 				packages.add(pkg);
 			} 
 		}
+		resolveRelations();
 	}
 
 	@Override
 	public XMLElement getElementModel(XMLElementGenerator generator) {
 		return generator.generate(this);
+	}
+	
+	public void resolveRelations() {
+		//TODO: interfaces and annotations;
+		Collection<ClassModel> classesCollection = projectContext.getLoadedClasses().values();
+		for (ClassModel classModel : classesCollection) {
+			classModel.resolveRelations();
+		}
 	}
 	
 	@SimpleElement(value="name", order=1)
