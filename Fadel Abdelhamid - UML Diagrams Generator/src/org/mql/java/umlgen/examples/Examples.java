@@ -4,7 +4,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.List;
 
-import org.mql.java.umlgen.models.ClassModel;
 import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
 import org.mql.java.umlgen.models.ProjectModel;
@@ -43,24 +42,11 @@ public class Examples {
 		public void myMethod(String param1, int param2, Integer param3) {
 			return;
 		}
-	}
-
-	public void exp01() {
-		try {
-			ProjectExplorer explorer = new ProjectExplorer("C:/Users/Abdelhamid/git/UMLGen/Fadel Abdelhamid - UML Diagrams Generator/bin");
-			List<Class<?>> classList = explorer.getLoadedClasses();
-			System.out.println("--Classes----------------------");
-			for (Class<?> clazz : classList) {
-				System.out.println(clazz.getName());
-			}
-			List<Package> packageList = explorer.getLoadedPackages();
-			System.out.println("--Packages---------------------");
-			for (Package pkg : packageList) {
-				System.out.println(pkg.getName());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		public int getD() {
+			return d;
 		}
+		
 	}
 	
 	public void exp02() {
@@ -83,23 +69,26 @@ public class Examples {
 	public void exp03(){
 		Method m = testClass.class.getDeclaredMethods()[0];
 		DOMGenerator domGen = new DOMGenerator();
-		domGen.generateDoc(new MethodModel(m).getElementModel(new CustomGenerator()));
+		domGen.generateDoc(new MethodModel(m).getElementModel(new CustomGenerator()), "test");
 		domGen.dump("resources/dump.xml");
 		
 	}
 	
-	public void exp04() {
+	/*
+	 //OLD EXAMPLE, THINGS HAVE CHANGED 
+	 public void exp04() {
 		Class<?> clazz = testClass2.class;
 		DOMGenerator domGen = new DOMGenerator();
 		domGen.generateDoc(new ClassModel(clazz).getElementModel(new CustomGenerator()));
 		domGen.dump("resources/dump.xml");
 		System.out.println("dumped");
 	}
+	*/
 	
 	public void exp05() {
 		try {
 			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p05-MultiThreading/bin");
-			DOMGenerator generator = new DOMGenerator(project.getElementModel(new CustomGenerator()));
+			DOMGenerator generator = new DOMGenerator(project.getElementModel(new CustomGenerator()), "uml-diagram");
 			generator.dump("resources/dump.xml");
 			System.out.println("dumped");
 		} catch (Exception e) {

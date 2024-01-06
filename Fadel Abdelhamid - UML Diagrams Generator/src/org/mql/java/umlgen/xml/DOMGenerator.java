@@ -33,14 +33,14 @@ public class DOMGenerator {
 		}
 	}
 	
-	public DOMGenerator(XMLElement rootElement) {
+	public DOMGenerator(XMLElement rootElement, String title) {
 		this();
-		generateDoc(rootElement);
+		generateDoc(rootElement, title);
 	}
 	
 	
-	public void generateDoc(XMLElement rootElement) {
-		Element root = document.createElement(rootElement.getElementName());
+	public void generateDoc(XMLElement rootElement, String title) {
+		Element root = document.createElement(title);
         document.appendChild(root);
         generateElement(root, rootElement);
 	}
