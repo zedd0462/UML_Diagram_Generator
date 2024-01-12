@@ -2,7 +2,6 @@ package org.mql.java.umlgen.examples;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.List;
 
 import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
@@ -87,7 +86,7 @@ public class Examples {
 	
 	public void exp05() {
 		try {
-			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p05-MultiThreading/bin");
+			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p02-Generics/bin");
 			DOMGenerator generator = new DOMGenerator(project.getElementModel(new CustomGenerator()), "uml-diagram");
 			generator.dump("resources/dump.xml");
 			System.out.println("dumped");

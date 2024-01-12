@@ -62,11 +62,11 @@ public class PackageModel implements UMLModelEntity{
 							annotatons.add(model);
 							projectContext.addAnnotation(model);
 						} else if (clazz.isInterface()) {
-							InterfaceModel model = new InterfaceModel(clazz);
+							InterfaceModel model = new InterfaceModel(projectContext, clazz);
 							interfaces.add(model);
 							projectContext.addInterface(model);
 						} else {
-							ClassModel model = new ClassModel(projectContext ,clazz);
+							ClassModel model = new ClassModel(projectContext, clazz);
 							classes.add(model);
 							projectContext.addClass(model);
 						}
@@ -83,7 +83,7 @@ public class PackageModel implements UMLModelEntity{
 	}
 
 	@SimpleElement(value="name", order=1)
-	public String getPackageFullName() {
+	public String getName() {
 		return packageFullName;
 	}
 

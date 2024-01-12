@@ -15,8 +15,10 @@ public class FieldModel implements UMLModelEntity{
 	private String name;
 	private String returnType;
 	private List<ModifierModel> modifiers;
+	private Field reflectField;
 
 	public FieldModel(Field field) {
+		this.reflectField = field;
 		this.name = field.getName();
 		this.returnType = field.getType().getName();
 		modifiers = new Vector<ModifierModel>();
@@ -37,9 +39,14 @@ public class FieldModel implements UMLModelEntity{
 	public String getReturnType() {
 		return returnType;
 	}
+	
 	@ComplexElement(value="name", order=3)
 	public List<ModifierModel> getModifiers() {
 		return modifiers;
+	}
+	
+	public Field getReflectField() {
+		return reflectField;
 	}
 
 	

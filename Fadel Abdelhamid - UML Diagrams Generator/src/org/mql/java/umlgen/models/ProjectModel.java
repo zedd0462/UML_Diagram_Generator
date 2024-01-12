@@ -69,10 +69,13 @@ public class ProjectModel implements UMLModelEntity{
 	}
 	
 	public void resolveRelations() {
-		//TODO: interfaces and annotations;
-		Collection<ClassModel> classesCollection = projectContext.getLoadedClasses().values();
-		for (ClassModel classModel : classesCollection) {
-			classModel.resolveRelations();
+		//TODO: can be optimized
+		Collection<RelationEntity> Entities = new Vector<RelationEntity>();
+		Entities.addAll(projectContext.getLoadedClasses().values());
+		Entities.addAll(projectContext.getLoadedInterfaces().values());
+		Entities.addAll(projectContext.getLoadedAnnotations().values());
+		for (RelationEntity entity : Entities) {
+			entity.resolveRelations();
 		}
 	}
 	

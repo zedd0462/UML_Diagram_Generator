@@ -12,12 +12,11 @@ import org.mql.java.umlgen.xml.XMLElement;
 import org.mql.java.umlgen.xml.XMLElementGenerator;
 
 @ComplexElement(value="class")
-public class ClassModel implements UMLModelEntity{
+public class ClassModel implements UMLModelEntity, RelationEntity{
 	
 	
 	//TODO: not complete
 	private String name;
-	private String superClass;
 	private ProjectContext projectContext;
 	private List<ModifierModel> modifiers;
 	private List<ConstructorModel> constructors;
@@ -44,12 +43,10 @@ public class ClassModel implements UMLModelEntity{
 		relations = new Vector<RelationModel>();
 		pendingFields = new Vector<Field>();
 		
-		
-		
 		this.name = clazz.getName();
-		this.superClass = clazz.getSuperclass().getName();
 
 		modifiers.addAll(ModifierModel.getModifiers(clazz.getModifiers()));
+		
 		for (Constructor<?> c : clazz.getConstructors()) {
 			constructors.add(new ConstructorModel(c));
 		}
@@ -68,11 +65,19 @@ public class ClassModel implements UMLModelEntity{
 	}
 
 	public void resolveRelations() {
+		//adding inhertiance relation if superclass is within the project.
+		Class<?> superclass = reflectClass.getSuperclass();
+		if((!reflectClass.equals(Object.class)) && projectContext.isLoaded(superclass)) {
+			ClassModel superclassModel = projectContext.getLoadedClassModel(superclass);
+			RelationModel newRelation = new RelationModel(this, superclassModel, 3);
+			relations.add(newRelation);
+			projectContext.addRelation(newRelation);
+		}
 		for (Field f : pendingFields) {
 			Class<?> fieldType = f.getType();
 			//TODO: add support for collections.
 			if(projectContext.isLoaded(fieldType)) {
-				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedClassModel(fieldType));
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(fieldType));
 				relations.add(newRelation);
 				projectContext.addRelation(newRelation);
 			} else {
@@ -85,16 +90,17 @@ public class ClassModel implements UMLModelEntity{
 	public XMLElement getElementModel(XMLElementGenerator generator) {
 		return generator.generate(this);
 	}
+	
+	@Override
+	public Class<?> getReflectClass() {
+		return reflectClass;
+	}
 
-	@SimpleElement(value="name", order=0)
+	@Override
+	@SimpleElement(value="name", order=1)
 	public String getName() {
 		return name;
-	}
-	
-	@SimpleElement(value="superclass", order=1)
-	public String getSuperClass() {
-		return superClass;
-	}
+	}	
 
 	@ComplexElement(value="modifiers", order=2)
 	public List<ModifierModel> getModifiers() {
@@ -121,9 +127,7 @@ public class ClassModel implements UMLModelEntity{
 		return relations;
 	}
 	
-	public Class<?> getReflectClass() {
-		return reflectClass;
-	}
+	
 	
 	
 

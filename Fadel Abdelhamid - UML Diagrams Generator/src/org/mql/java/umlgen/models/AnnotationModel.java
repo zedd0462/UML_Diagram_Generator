@@ -10,7 +10,7 @@ import org.mql.java.umlgen.xml.XMLElement;
 import org.mql.java.umlgen.xml.XMLElementGenerator;
 
 @ComplexElement(value="annotation")
-public class AnnotationModel implements UMLModelEntity{
+public class AnnotationModel implements RelationEntity{
 	
 	//TODO finish this
 	private String name;
@@ -27,12 +27,23 @@ public class AnnotationModel implements UMLModelEntity{
 			methods.add(new MethodModel(m));
 		}
 	}
+	
+	public void resolveRelations() {
+		//TODO implements relations in annotations
+		
+	}
 
 	@Override
 	public XMLElement getElementModel(XMLElementGenerator generator) {
 		return generator.generate(this);
 	}
+	
+	@Override
+	public Class<?> getReflectClass() {
+		return reflectClass;
+	}
 
+	@Override
 	@SimpleElement(value="name", order=1)
 	public String getName() {
 		return name;
@@ -43,7 +54,5 @@ public class AnnotationModel implements UMLModelEntity{
 		return methods;
 	}
 	
-	public Class<?> getReflectClass() {
-		return reflectClass;
-	}
+	
 }

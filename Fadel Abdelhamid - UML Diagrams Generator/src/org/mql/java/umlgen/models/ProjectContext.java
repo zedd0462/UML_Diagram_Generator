@@ -16,7 +16,6 @@ public class ProjectContext {
 	
 	private URLClassLoader classloader;
 
-
 	public ProjectContext(ProjectModel currentProject) {
 		this.currentProject = currentProject;
 		loadedClasses = new Hashtable<Class<?>, ClassModel>();
@@ -69,10 +68,21 @@ public class ProjectContext {
 		return loadedAnnotations;
 	}
 	
+	/**
+	 * Returns boolean value if the class has been loaded in the project
+	 * that this context belongs to.
+	 * @param clazz Reflect class object
+	 * @return If the class is loaded.
+	 */
 	public boolean isLoaded(Class<?> clazz) {
-		return loadedClasses.containsKey(clazz);
+		return loadedClasses.containsKey(clazz) || loadedInterfaces.containsKey(clazz) || loadedAnnotations.containsKey(clazz);
 	}
 	
+	/**
+	 * Returns ClassModel representation from a reflect class if it's loaded in the project.
+	 * @param clazz Reflect class object
+	 * @return The Corresponding ClassModel
+	 */
 	public ClassModel getLoadedClassModel(Class<?> clazz) {
 		return loadedClasses.get(clazz);
 	}
@@ -83,6 +93,16 @@ public class ProjectContext {
 
 	public AnnotationModel getLoadedAnnotationModel(Class<?> clazz) {
 		return loadedAnnotations.get(clazz);
+	}
+	
+	public RelationEntity getLoadedRelationEntity(Class<?> clazz) {
+		if (clazz.isAnnotation()) {
+			return getLoadedRelationEntity(clazz);
+		}
+		if (clazz.isInterface()) {
+			return getLoadedInterfaceModel(clazz);
+		}
+		return getLoadedClassModel(clazz);
 	}
 	
 

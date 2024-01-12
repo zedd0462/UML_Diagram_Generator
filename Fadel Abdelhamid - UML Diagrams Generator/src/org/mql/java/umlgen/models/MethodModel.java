@@ -18,8 +18,10 @@ public class MethodModel implements UMLModelEntity{
 	private List<ModifierModel> modifiers;
 	private String returnType;
 	private String name;
+	private Method reflectMethod;
 
 	public MethodModel(Method method) {
+		this.reflectMethod = method;
 		this.parameters = new Vector<ParameterModel>();
 		this.modifiers = new Vector<ModifierModel>();		
 		this.name = method.getName();
@@ -54,6 +56,10 @@ public class MethodModel implements UMLModelEntity{
 	@SimpleElement(value="return", order=2)
 	public String getReturnType() {
 		return returnType;
+	}
+	
+	public Method getReflectMethod() {
+		return reflectMethod;
 	}
 	
 }

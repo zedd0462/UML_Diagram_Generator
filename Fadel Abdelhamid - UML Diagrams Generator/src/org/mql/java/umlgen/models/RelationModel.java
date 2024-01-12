@@ -1,5 +1,7 @@
 package org.mql.java.umlgen.models;
 
+import java.util.Map;
+
 import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
 import org.mql.java.umlgen.xml.XMLElement;
@@ -8,26 +10,30 @@ import org.mql.java.umlgen.xml.XMLElementGenerator;
 
 @ComplexElement(value="relation")
 public class RelationModel implements UMLModelEntity {
-	private String sourceClass;
-	private String targetClass;
-	private String relationType;
+	
+	public static Map<Integer, String> relationString = Map.of(
+				0, "Association",
+				1, "Aggregation",
+				2, "Composition",
+				3, "Inheritance",
+				4, "Realization",
+				5, "Dependency"
+			);
+	
+	private RelationEntity source;
+	private RelationEntity target;
+	private int relationType;
+	private String cardinality = "N/A";
 
-	public RelationModel(String sourceClass, String targetClass, String relationType) {
-		this.sourceClass = sourceClass;
-		this.targetClass = targetClass;
-		this.relationType = relationType;
+	public RelationModel(RelationEntity source, RelationEntity target) {
+		this.source = source;
+		this.target = target;
+		this.relationType = 0; //If not specified it is an association
 	}
-
-	public RelationModel(ClassModel sourceClass, ClassModel targetClass, String relationType) {
-		this.sourceClass = sourceClass.getName();
-		this.targetClass = targetClass.getName();
+	
+	public RelationModel(RelationEntity source, RelationEntity target, int relationType) {
+		this(source, target);
 		this.relationType = relationType;
-	}
-
-	public RelationModel(ClassModel sourceClass, ClassModel targetClass) {
-		this.sourceClass = sourceClass.getName();
-		this.targetClass = targetClass.getName();
-		this.relationType = "Unspecified";
 	}
 
 	@Override
@@ -36,18 +42,27 @@ public class RelationModel implements UMLModelEntity {
 	}
 
 	@SimpleElement(value="source", order=1)
-	public String getSourceClass() {
-		return sourceClass;
+	public String getSourceClassString() {
+		return source.getName();
 	}
 
 	@SimpleElement(value="target", order=2)
-	public String getTargetClass() {
-		return targetClass;
+	public String getTargetClassString() {
+		return target.getName();
 	}
 	
 	@SimpleElement(value="type", order=3)
-	public String getRelationType() {
+	public String getRelationTypeString() {
+		return relationString.get(relationType);
+	}
+	
+	public int getRelationType() {
 		return relationType;
+	}
+	
+	@SimpleElement(value="cardinality", order=4)
+	public String getCardinality() {
+		return cardinality;
 	}
 
 	

@@ -36,7 +36,7 @@ public class DefaultPackageModel extends PackageModel {
 						if (clazz.isAnnotation()) {
 							annotatons.add(new AnnotationModel(clazz));
 						} else if (clazz.isInterface()) {
-							interfaces.add(new InterfaceModel(clazz));
+							interfaces.add(new InterfaceModel(projectContext, clazz));
 						} else {
 							classes.add(new ClassModel(projectContext, clazz));
 						}
