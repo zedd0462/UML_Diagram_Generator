@@ -17,7 +17,7 @@ import org.mql.java.umlgen.xml.XMLElementGenerator;
 @ComplexElement(value="project")
 public class ProjectModel implements UMLModelEntity{
 	
-	private String name;
+	private String name = "";
 	private String path;
 	private List<PackageModel> packages;
 	private ProjectContext projectContext;
