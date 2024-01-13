@@ -18,7 +18,7 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 	//TODO: not complete
 	private String name;
 	private ProjectContext projectContext;
-	private List<ModifierModel> modifiers;
+	private int modifiers;
 	private List<ConstructorModel> constructors;
 	private List<FieldModel> fields;
 	private List<MethodModel> methods;
@@ -36,7 +36,7 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 	public ClassModel(ProjectContext context,Class<?> clazz) {
 		this.projectContext = context;
 		this.reflectClass = clazz;
-		modifiers = new Vector<ModifierModel>();
+		modifiers = clazz.getModifiers();
 		constructors = new Vector<ConstructorModel>();
 		fields = new Vector<FieldModel>();
 		methods = new Vector<MethodModel>();
@@ -44,8 +44,6 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 		pendingFields = new Vector<Field>();
 		
 		this.name = clazz.getName();
-
-		modifiers.addAll(ModifierModel.getModifiers(clazz.getModifiers()));
 		
 		for (Constructor<?> c : clazz.getConstructors()) {
 			constructors.add(new ConstructorModel(c));
@@ -73,6 +71,18 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 			relations.add(newRelation);
 			projectContext.addRelation(newRelation);
 		}
+		
+		//adding relations for implemented classes
+		Class<?>[] implementedInterfaces = reflectClass.getInterfaces();
+		for (Class<?> interf : implementedInterfaces) {
+			if(projectContext.isLoaded(interf)) {
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedInterfaceModel(interf), 4);
+				relations.add(newRelation);
+				projectContext.addRelation(newRelation);
+			}
+		}
+		
+		//adding relations for fields of classes that exists in current project
 		for (Field f : pendingFields) {
 			Class<?> fieldType = f.getType();
 			//TODO: add support for collections.
@@ -102,8 +112,8 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 		return name;
 	}	
 
-	@ComplexElement(value="modifiers", order=2)
-	public List<ModifierModel> getModifiers() {
+	@SimpleElement(value="modifiers", order=2)
+	public int getModifiers() {
 		return modifiers;
 	}
 	

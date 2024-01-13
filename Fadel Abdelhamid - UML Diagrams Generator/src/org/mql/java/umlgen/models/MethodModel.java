@@ -15,22 +15,21 @@ public class MethodModel implements UMLModelEntity{
 	
 	//private AnnotationModel[] annotations;
 	private List<ParameterModel> parameters;
-	private List<ModifierModel> modifiers;
+	private int modifiers;
 	private String returnType;
 	private String name;
 	private Method reflectMethod;
 
 	public MethodModel(Method method) {
-		this.reflectMethod = method;
-		this.parameters = new Vector<ParameterModel>();
-		this.modifiers = new Vector<ModifierModel>();		
-		this.name = method.getName();
+		reflectMethod = method;
+		parameters = new Vector<ParameterModel>();
+		modifiers = method.getModifiers();		
+		name = method.getName();
 		this.returnType = method.getReturnType().getName();
 		for (Parameter p : method.getParameters()) {
 			parameters.add(new ParameterModel(p));
 		}
 		int m = method.getModifiers();
-		modifiers.addAll(ModifierModel.getModifiers(m));
 	}
 
 	@Override
@@ -43,8 +42,8 @@ public class MethodModel implements UMLModelEntity{
 		return parameters;
 	}
 
-	@ComplexElement(value="modifiers", order=4)
-	public List<ModifierModel> getModifiers() {
+	@SimpleElement(value="modifiers", order=4)
+	public int getModifiers() {
 		return modifiers;
 	}
 	

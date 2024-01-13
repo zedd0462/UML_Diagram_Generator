@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.mql.java.umlgen.annotations.ComplexElement;
+import org.mql.java.umlgen.annotations.SimpleElement;
 import org.mql.java.umlgen.xml.XMLElement;
 import org.mql.java.umlgen.xml.XMLElementGenerator;
 
@@ -13,15 +14,14 @@ import org.mql.java.umlgen.xml.XMLElementGenerator;
 public class ConstructorModel implements UMLModelEntity{
 	
 	private List<ParameterModel> parameters;
-	private List<ModifierModel> modifiers;
+	private int modifiers;
 	
 	public ConstructorModel(Constructor<?> constructor) {
 		parameters = new Vector<ParameterModel>();
-		modifiers = new Vector<ModifierModel>();
+		modifiers = constructor.getModifiers();
 		for (Parameter parameter : constructor.getParameters()) {
 			parameters.add(new ParameterModel(parameter));
 		}
-		modifiers.addAll(ModifierModel.getModifiers(constructor.getModifiers()));
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class ConstructorModel implements UMLModelEntity{
 		return parameters;
 	}
 
-	@ComplexElement(value="parameters", order=2)
-	public List<ModifierModel> getModifiers() {
+	@SimpleElement(value="modifiers", order=2)
+	public int getModifiers() {
 		return modifiers;
 	}
 

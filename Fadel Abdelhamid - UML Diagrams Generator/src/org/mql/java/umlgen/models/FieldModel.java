@@ -14,15 +14,14 @@ public class FieldModel implements UMLModelEntity{
 	
 	private String name;
 	private String returnType;
-	private List<ModifierModel> modifiers;
+	private int modifiers;
 	private Field reflectField;
 
 	public FieldModel(Field field) {
 		this.reflectField = field;
 		this.name = field.getName();
 		this.returnType = field.getType().getName();
-		modifiers = new Vector<ModifierModel>();
-		modifiers.addAll(ModifierModel.getModifiers(field.getModifiers()));
+		modifiers = field.getModifiers();
 	}
 
 	@Override
@@ -35,13 +34,13 @@ public class FieldModel implements UMLModelEntity{
 		return name;
 	}
 
-	@SimpleElement(value="name", order=2)
+	@SimpleElement(value="return", order=2)
 	public String getReturnType() {
 		return returnType;
 	}
 	
-	@ComplexElement(value="name", order=3)
-	public List<ModifierModel> getModifiers() {
+	@SimpleElement(value="modifiers", order=3)
+	public int getModifiers() {
 		return modifiers;
 	}
 	
