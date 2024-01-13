@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * Represents content that will be represented with an {@code XMLElement}
  * with simple content, the name of the tag will be in the attribute 
  * {@code value}. 
- * This annotation should be on a getter that returns a String.
+ * This annotation should be on a getter.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

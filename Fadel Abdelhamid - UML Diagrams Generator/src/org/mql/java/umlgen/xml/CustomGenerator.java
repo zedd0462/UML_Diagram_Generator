@@ -40,7 +40,8 @@ public class CustomGenerator implements XMLElementGenerator {
 				ComplexElement ce = method.getDeclaredAnnotation(ComplexElement.class);
 				if(se != null) {
 					XMLElement subElement = new XMLElement(se.value());
-					XMLSimpleContent subSubElement = new XMLSimpleContent((String)method.invoke(model, new Object[]{}));
+					String textContent = method.invoke(model, new Object[]{}).toString();
+					XMLSimpleContent subSubElement = new XMLSimpleContent(textContent);
 					subElement.addChildren(subSubElement);
 					element.addChildren(subElement);
 				}
