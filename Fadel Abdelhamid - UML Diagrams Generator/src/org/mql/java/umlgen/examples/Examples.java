@@ -3,9 +3,13 @@ package org.mql.java.umlgen.examples;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
+import javax.swing.JFrame;
+
+import org.mql.java.umlgen.models.ClassModel;
 import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
 import org.mql.java.umlgen.models.ProjectModel;
+import org.mql.java.umlgen.ui.ClassVisual;
 import org.mql.java.umlgen.xml.CustomGenerator;
 import org.mql.java.umlgen.xml.DOMGenerator;
 import org.mql.java.umlgen.xml.XMLElement;
@@ -93,6 +97,17 @@ public class Examples {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void exp06() {
+		ClassModel classModel = new ClassModel(null, testClass2.class);
+		ClassVisual classVisual = new ClassVisual(classModel);
+		JFrame frame = new JFrame("Class Visualization");
+		frame.setContentPane(classVisual);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(200,200);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	public static void main(String[] args) {

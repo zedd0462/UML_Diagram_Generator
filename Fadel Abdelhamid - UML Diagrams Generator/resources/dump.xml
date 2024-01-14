@@ -34,6 +34,7 @@
                                                 <modifiers>1025</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.AbstractList</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
@@ -310,6 +311,7 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.DataDrawer</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
@@ -323,6 +325,7 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.Examples</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
@@ -341,13 +344,13 @@
                                                         <modifiers>9</modifiers>
                                                     </method>
                                                     <method>
-                                                        <name>exp03</name>
+                                                        <name>exp02</name>
                                                         <return>void</return>
                                                         <parametres/>
                                                         <modifiers>0</modifiers>
                                                     </method>
                                                     <method>
-                                                        <name>exp02</name>
+                                                        <name>exp03</name>
                                                         <return>void</return>
                                                         <parametres/>
                                                         <modifiers>0</modifiers>
@@ -366,6 +369,7 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.LinkedList</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -375,6 +379,7 @@
                                                         <modifiers>1</modifiers>
                                                     </constructor>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.LinkedList</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -384,6 +389,7 @@
                                                         <modifiers>1</modifiers>
                                                     </constructor>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.LinkedList</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
@@ -560,10 +566,12 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.LinkedListSet</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.LinkedListSet</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -589,6 +597,7 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.ListIterator</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -649,6 +658,7 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.SetIterator</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -720,10 +730,12 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.Vector</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.Vector</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -903,10 +915,12 @@
                                                 <modifiers>1</modifiers>
                                                 <constructors>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.VectorSet</name>
                                                         <parameters/>
                                                         <modifiers>1</modifiers>
                                                     </constructor>
                                                     <constructor>
+                                                        <name>org.mql.java.generics.VectorSet</name>
                                                         <parameters>
                                                             <parameter>
                                                                 <name>arg0</name>
@@ -931,6 +945,7 @@
                                         <interfaces>
                                             <interface>
                                                 <name>org.mql.java.generics.List</name>
+                                                <simple-name>org.mql.java.generics.List</simple-name>
                                                 <fields/>
                                                 <methods>
                                                     <method>
@@ -1179,6 +1194,7 @@
                                             </interface>
                                             <interface>
                                                 <name>org.mql.java.generics.Set</name>
+                                                <simple-name>org.mql.java.generics.Set</simple-name>
                                                 <fields/>
                                                 <methods>
                                                     <method>
@@ -1354,6 +1370,7 @@
                                                         <modifiers>1</modifiers>
                                                         <constructors>
                                                             <constructor>
+                                                                <name>org.mql.java.generics.complement.Examples</name>
                                                                 <parameters/>
                                                                 <modifiers>1</modifiers>
                                                             </constructor>
@@ -1372,13 +1389,13 @@
                                                                 <modifiers>9</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>exp03</name>
+                                                                <name>exp02</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>exp02</name>
+                                                                <name>exp03</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
@@ -1397,6 +1414,7 @@
                                                         <modifiers>1</modifiers>
                                                         <constructors>
                                                             <constructor>
+                                                                <name>org.mql.java.generics.complement.Pixel</name>
                                                                 <parameters/>
                                                                 <modifiers>1</modifiers>
                                                             </constructor>
@@ -1417,6 +1435,7 @@
                                                         <modifiers>1</modifiers>
                                                         <constructors>
                                                             <constructor>
+                                                                <name>org.mql.java.generics.complement.Point</name>
                                                                 <parameters/>
                                                                 <modifiers>1</modifiers>
                                                             </constructor>
@@ -1533,277 +1552,13 @@
                                                         <fields/>
                                                         <methods>
                                                             <method>
-                                                                <name>testVectorRemove</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorContains</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorToArray</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorIterator</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorfromList</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSize</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListSize</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSubList</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorToString</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorGet</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorIsEmpty</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSort</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedList</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListGet</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorIndexOf</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorClear</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListSetFromIterable</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
                                                                 <name>testLinkedListSetContainsAll</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>testLinkedListIterator</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorLastIndexOf</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorContainsAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListContainsAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListRemoveAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSetFromIterable</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListLastIndexOf</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSetContainsAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListIsEmpty</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListContains</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListSubList</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorRemoveAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListReversed</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListAddAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorRemoveObject</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListSetClass</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListAddWithIndex</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSetRemoveAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListRemove</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListToString</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListSetRemoveAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListfromList</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorSetAddAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListSetAddAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListRemoveObject</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListClear</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testLinkedListToArray</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
-                                                                <name>testVectorAddWithIndex</name>
+                                                                <name>testLinkedListSetFromIterable</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
@@ -1842,19 +1597,265 @@
                                                                 <modifiers>4106</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>testVectorReversed</name>
+                                                                <name>testLinkedListToString</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>testSetIterator</name>
+                                                                <name>testLinkedListLastIndexOf</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>testVectorSetClass</name>
+                                                                <name>testVectorAddWithIndex</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorContainsAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListAddWithIndex</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListRemove</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListToArray</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListSubList</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListClear</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListIterator</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListAddAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListIsEmpty</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorLastIndexOf</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListContains</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorRemoveObject</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListRemoveObject</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListfromList</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListReversed</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListRemoveAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListSetAddAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSetAddAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListContainsAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSetFromIterable</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSetContainsAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorRemoveAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListSetRemoveAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSetRemoveAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListSetClass</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorClear</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorRemove</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorContains</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorToArray</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorGet</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSort</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorIndexOf</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedList</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSize</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListSize</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListGet</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorIsEmpty</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorfromList</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSubList</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testLinkedListSet</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorIterator</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
@@ -1866,19 +1867,37 @@
                                                                 <modifiers>0</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>testVectorAddAll</name>
-                                                                <return>void</return>
-                                                                <parametres/>
-                                                                <modifiers>0</modifiers>
-                                                            </method>
-                                                            <method>
                                                                 <name>testVectorSet</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
                                                             </method>
                                                             <method>
-                                                                <name>testLinkedListSet</name>
+                                                                <name>testVectorReversed</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorToString</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorSetClass</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testVectorAddAll</name>
+                                                                <return>void</return>
+                                                                <parametres/>
+                                                                <modifiers>0</modifiers>
+                                                            </method>
+                                                            <method>
+                                                                <name>testSetIterator</name>
                                                                 <return>void</return>
                                                                 <parametres/>
                                                                 <modifiers>0</modifiers>
@@ -1891,6 +1910,7 @@
                                                         <modifiers>1</modifiers>
                                                         <constructors>
                                                             <constructor>
+                                                                <name>org.mql.java.generics.tests.TestRunner</name>
                                                                 <parameters/>
                                                                 <modifiers>1</modifiers>
                                                             </constructor>
