@@ -1,5 +1,7 @@
 package org.mql.java.umlgen.models;
 
+import static org.mql.java.umlgen.utils.StringUtils.*;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.List;
@@ -14,14 +16,12 @@ import org.mql.java.umlgen.xml.XMLElementGenerator;
 public class MethodModel implements UMLModelEntity{
 	
 	//private AnnotationModel[] annotations;
+	private String name;
 	private List<ParameterModel> parameters;
 	private int modifiers;
 	private String returnType;
-	private String name;
-	private Method reflectMethod;
 
 	public MethodModel(Method method) {
-		reflectMethod = method;
 		parameters = new Vector<ParameterModel>();
 		modifiers = method.getModifiers();		
 		name = method.getName();
@@ -29,7 +29,26 @@ public class MethodModel implements UMLModelEntity{
 		for (Parameter p : method.getParameters()) {
 			parameters.add(new ParameterModel(p));
 		}
-		int m = method.getModifiers();
+	}
+
+	public MethodModel(String name, List<ParameterModel> parameters, int modifiers, String returnType) {
+		super();
+		this.name = name;
+		this.parameters = parameters;
+		this.modifiers = modifiers;
+		this.returnType = returnType;
+	}
+
+	public MethodModel(String name, int modifiers, String returnType) {
+		super();
+		this.name = name;
+		this.parameters = new Vector<ParameterModel>();
+		this.modifiers = modifiers;
+		this.returnType = returnType;
+	}
+	
+	public void addParameter(ParameterModel parameter) {
+		parameters.add(parameter);
 	}
 
 	@Override
@@ -57,8 +76,22 @@ public class MethodModel implements UMLModelEntity{
 		return returnType;
 	}
 	
-	public Method getReflectMethod() {
-		return reflectMethod;
+	@Override
+	public String toString() {
+		String methodString = "";
+		methodString += getAccessModifierSymbol(modifiers) + " ";
+		methodString += name + "(";
+		if(!parameters.isEmpty()) {
+			for (ParameterModel param : parameters) {
+				methodString += getClassShortName(param.getType()) + ", ";
+			}
+			methodString = methodString.substring(0, methodString.length() - 2) + ") : ";
+		}else {
+			methodString += ") : ";
+		}
+		methodString += getClassShortName(returnType);
+		return methodString;
 	}
+	
 	
 }

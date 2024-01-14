@@ -38,6 +38,7 @@ public class ProjectModel implements UMLModelEntity{
 		defaultPackage = new DefaultPackageModel(projectContext);
 		if(!defaultPackage.isEmpty()) {
 			packages.add(defaultPackage);
+			projectContext.addPackage(defaultPackage);
 		}
 		File file = new File(path);
 		if(file.isDirectory()) {
@@ -58,6 +59,7 @@ public class ProjectModel implements UMLModelEntity{
 			if (f.isDirectory()) {
 				PackageModel pkg = new PackageModel(projectContext, f.getAbsolutePath());
 				packages.add(pkg);
+				projectContext.addPackage(pkg);
 			} 
 		}
 		resolveRelations();

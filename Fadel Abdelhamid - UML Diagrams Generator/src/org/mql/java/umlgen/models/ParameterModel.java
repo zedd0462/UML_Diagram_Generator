@@ -12,12 +12,16 @@ public class ParameterModel implements UMLModelEntity {
 	
 	private String type;
 	private String name;
-	private Parameter reflectParemeter;
 
 	public ParameterModel(Parameter parameter) {
-		reflectParemeter = parameter;
 		this.type = parameter.getType().getName();
 		this.name = parameter.getName();
+	}
+
+	public ParameterModel(String type, String name) {
+		super();
+		this.type = type;
+		this.name = name;
 	}
 
 	@Override
@@ -30,14 +34,14 @@ public class ParameterModel implements UMLModelEntity {
 		return type;
 	}
 
-	
 	@SimpleElement(value="name", order=1)
 	public String getName() {
 		return name;
 	}
 	
-	public Parameter getReflectParemeter() {
-		return reflectParemeter;
+	@Override
+	public String toString() {
+		return name + " : " + type;
 	}
 	
 	

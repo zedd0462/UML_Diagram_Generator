@@ -14,21 +14,17 @@ import org.mql.java.umlgen.xml.XMLElementGenerator;
 public class InterfaceModel implements RelationEntity {
 	
 	//TODO interfaceModel not done
-	ProjectContext projectContext;
+	private ProjectContext projectContext;
 	private String name;
 	private Class<?> superclass;
 	private List<MethodModel> methods;
 	private List<FieldModel> fields;
 	private List<RelationModel> relations;
-	private Class<?> reflectClass;
 	
 
 	public InterfaceModel(ProjectContext projectContext, Class<?> interf) {
-		this.reflectClass = interf;
 		this.projectContext = projectContext;
-		methods = new Vector<MethodModel>();
-		fields = new Vector<FieldModel>();
-		relations = new Vector<RelationModel>();
+		initLists();
 		this.name = interf.getName();
 		Class<?>[] tmp = interf.getInterfaces();
 		if(tmp.length > 0) {
@@ -44,9 +40,53 @@ public class InterfaceModel implements RelationEntity {
 		}
 	}
 	
+	
+	
+	public InterfaceModel(
+			ProjectContext projectContext,
+			String name,
+			List<MethodModel> methods,
+			List<FieldModel> fields,
+			List<RelationModel> relations) {
+		super();
+		this.projectContext = projectContext;
+		this.name = name;
+		this.methods = methods;
+		this.fields = fields;
+		this.relations = relations;
+	}
+
+	
+
+	public InterfaceModel(ProjectContext projectContext, String name) {
+		super();
+		this.projectContext = projectContext;
+		this.name = name;
+		initLists();
+	}
+
+	public void initLists() {
+		methods = new Vector<MethodModel>();
+		fields = new Vector<FieldModel>();
+		relations = new Vector<RelationModel>();
+	}
+	
+	public void addMethod(MethodModel method) {
+		methods.add(method);
+	}
+	
+	public void addField(FieldModel field) {
+		fields.add(field);
+	}
+	
+	public void addRelation(RelationModel relation) {
+		relations.add(relation);
+		projectContext.addRelation(relation);
+	}
+
 	public void resolveRelations() {
 		if(superclass != null) {
-			RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(superclass), 3);
+			RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(superclass.getName()), 3);
 			relations.add(newRelation);
 			projectContext.addRelation(newRelation);
 		}
@@ -58,12 +98,7 @@ public class InterfaceModel implements RelationEntity {
 	}
 	
 	@Override
-	public Class<?> getReflectClass() {
-		return reflectClass;
-	}
-	
-	@Override
-	@SimpleElement(value="name", order=1)
+	@SimpleElement(value="name", order=0)
 	public String getName() {
 		return name;
 	}

@@ -9,31 +9,41 @@ import java.util.Vector;
 public class ProjectContext {
 
 	private ProjectModel currentProject;
-	private Map<Class<?>, ClassModel> loadedClasses;
-	private Map<Class<?>, InterfaceModel> loadedInterfaces;
-	private Map<Class<?>, AnnotationModel> loadedAnnotations;
+	private Map<String, ClassModel> loadedClasses;
+	private Map<String, InterfaceModel> loadedInterfaces;
+	private Map<String, AnnotationModel> loadedAnnotations;
+	private Map<String, PackageModel> loadedPackages;
 	private List<RelationModel> relations;
 	
 	private URLClassLoader classloader;
 
 	public ProjectContext(ProjectModel currentProject) {
 		this.currentProject = currentProject;
-		loadedClasses = new Hashtable<Class<?>, ClassModel>();
+		initLists();
+	}
+	
+	public void initLists() {
+		loadedClasses = new Hashtable<String, ClassModel>();
+		loadedInterfaces = new Hashtable<String, InterfaceModel>();
+		loadedAnnotations = new Hashtable<String, AnnotationModel>();
+		loadedPackages = new Hashtable<String, PackageModel>();
 		relations = new Vector<RelationModel>();
-		loadedInterfaces = new Hashtable<Class<?>, InterfaceModel>();
-		loadedAnnotations = new Hashtable<Class<?>, AnnotationModel>();
+	}
+	
+	public void addPackage(PackageModel pkg) {
+		loadedPackages.put(pkg.getName(), pkg);
 	}
 	
 	public void addClass(ClassModel clazz) {
-		loadedClasses.put(clazz.getReflectClass(),clazz);
+		loadedClasses.put(clazz.getName(),clazz);
 	}
 
 	public void addInterface(InterfaceModel interf) {
-		loadedInterfaces.put(interf.getReflectClass(), interf);
+		loadedInterfaces.put(interf.getName(), interf);
 	}
 
 	public void addAnnotation(AnnotationModel annotation) {
-		loadedAnnotations.put(annotation.getReflectClass(), annotation);
+		loadedAnnotations.put(annotation.getName(), annotation);
 	}
 	
 	public void addRelation(RelationModel relation) {
@@ -42,10 +52,6 @@ public class ProjectContext {
 	
 	public ProjectModel getCurrentProject() {
 		return currentProject;
-	}
-	
-	public Map<Class<?>, ClassModel> getLoadedClasses() {
-		return loadedClasses;
 	}
 	
 	public List<RelationModel> getRelations() {
@@ -60,11 +66,15 @@ public class ProjectContext {
 		return classloader;
 	}
 
-	public Map<Class<?>, InterfaceModel> getLoadedInterfaces() {
+	public Map<String, ClassModel> getLoadedClasses() {
+		return loadedClasses;
+	}
+	
+	public Map<String, InterfaceModel> getLoadedInterfaces() {
 		return loadedInterfaces;
 	}
 
-	public Map<Class<?>, AnnotationModel> getLoadedAnnotations() {
+	public Map<String, AnnotationModel> getLoadedAnnotations() {
 		return loadedAnnotations;
 	}
 	
@@ -74,8 +84,8 @@ public class ProjectContext {
 	 * @param clazz Reflect class object
 	 * @return If the class is loaded.
 	 */
-	public boolean isLoaded(Class<?> clazz) {
-		return loadedClasses.containsKey(clazz) || loadedInterfaces.containsKey(clazz) || loadedAnnotations.containsKey(clazz);
+	public boolean isLoaded(String classname) {
+		return loadedClasses.containsKey(classname) || loadedInterfaces.containsKey(classname) || loadedAnnotations.containsKey(classname);
 	}
 	
 	/**
@@ -83,26 +93,26 @@ public class ProjectContext {
 	 * @param clazz Reflect class object
 	 * @return The Corresponding ClassModel
 	 */
-	public ClassModel getLoadedClassModel(Class<?> clazz) {
-		return loadedClasses.get(clazz);
+	public ClassModel getLoadedClassModel(String classname) {
+		return loadedClasses.get(classname);
 	}
 
-	public InterfaceModel getLoadedInterfaceModel(Class<?> clazz) {
-		return loadedInterfaces.get(clazz);
+	public InterfaceModel getLoadedInterfaceModel(String interfaceName) {
+		return loadedInterfaces.get(interfaceName);
 	}
 
-	public AnnotationModel getLoadedAnnotationModel(Class<?> clazz) {
-		return loadedAnnotations.get(clazz);
+	public AnnotationModel getLoadedAnnotationModel(String annotationName) {
+		return loadedAnnotations.get(annotationName);
 	}
 	
-	public RelationEntity getLoadedRelationEntity(Class<?> clazz) {
-		if (clazz.isAnnotation()) {
-			return getLoadedRelationEntity(clazz);
+	public RelationEntity getLoadedRelationEntity(String classname) {
+		if (loadedAnnotations.containsKey(classname)) {
+			return getLoadedAnnotationModel(classname);
 		}
-		if (clazz.isInterface()) {
-			return getLoadedInterfaceModel(clazz);
+		if (loadedInterfaces.containsKey(classname)) {
+			return getLoadedInterfaceModel(classname);
 		}
-		return getLoadedClassModel(clazz);
+		return getLoadedClassModel(classname);
 	}
 	
 

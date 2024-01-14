@@ -12,12 +12,12 @@ import org.mql.java.umlgen.xml.XMLElementGenerator;
 public class RelationModel implements UMLModelEntity {
 	
 	public static Map<Integer, String> relationString = Map.of(
-				0, "Association",
-				1, "Aggregation",
-				2, "Composition",
-				3, "Inheritance",
-				4, "Realization",
-				5, "Dependency"
+				0, "Association", // 
+				1, "Aggregation", // Not yet implemented
+				2, "Composition", // Not yet implemented
+				3, "Inheritance", //
+				4, "Realization", //
+				5, "Dependency"	  // Not yet implemented
 			);
 	
 	private RelationEntity source;

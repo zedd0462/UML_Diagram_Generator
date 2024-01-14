@@ -5,6 +5,6 @@ package org.mql.java.umlgen.models;
  */
 public interface RelationEntity extends UMLModelEntity{
 	public String getName();
-	public Class<?> getReflectClass();
+	//public Class<?> getReflectClass();
 	public void resolveRelations();
 }

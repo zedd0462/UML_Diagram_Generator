@@ -13,8 +13,7 @@ public class DefaultPackageModel extends PackageModel {
 		super();
 		this.isEmpty = true;
 		this.projectContext = projectContext;
-		this.packageFullName = "defaultPackage";
-		this.packageShortName = "defaultPackage";
+		this.name = "defaultPackage";
 		this.path = projectContext.getCurrentProject().getPath();
 		this.packageExplorer();
 	}
@@ -32,9 +31,9 @@ public class DefaultPackageModel extends PackageModel {
 					isEmpty = false;
 					String className = fileName.substring(0, fileName.length() - 6);
 					try {
-						Class<?> clazz = Class.forName(packageFullName + "." + className);
+						Class<?> clazz = Class.forName(name + "." + className);
 						if (clazz.isAnnotation()) {
-							annotatons.add(new AnnotationModel(clazz));
+							annotations.add(new AnnotationModel(clazz));
 						} else if (clazz.isInterface()) {
 							interfaces.add(new InterfaceModel(projectContext, clazz));
 						} else {

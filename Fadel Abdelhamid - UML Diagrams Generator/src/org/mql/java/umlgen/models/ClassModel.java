@@ -16,14 +16,14 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 	
 	
 	//TODO: not complete
-	private String name;
 	private ProjectContext projectContext;
+	private String name;
 	private int modifiers;
 	private List<ConstructorModel> constructors;
 	private List<FieldModel> fields;
 	private List<MethodModel> methods;
 	private List<RelationModel> relations;
-	private Class<?> reflectClass;
+	
 	
 	/*
 	 * To figure out relations we need all class models to
@@ -31,17 +31,14 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 	 * Maybe its not the best way to this.
 	 */
 	private List<Field> pendingFields;
+	private Class<?> reflectClass; // for resolving relations only.
 
 	//TODO: finish relations implementation
 	public ClassModel(ProjectContext context,Class<?> clazz) {
 		this.projectContext = context;
 		this.reflectClass = clazz;
 		modifiers = clazz.getModifiers();
-		constructors = new Vector<ConstructorModel>();
-		fields = new Vector<FieldModel>();
-		methods = new Vector<MethodModel>();
-		relations = new Vector<RelationModel>();
-		pendingFields = new Vector<Field>();
+		initLists();
 		
 		this.name = clazz.getName();
 		
@@ -61,12 +58,51 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 		}
 		
 	}
+	
+	
+
+	public ClassModel(
+			ProjectContext projectContext,
+			String name,
+			int modifiers,
+			List<ConstructorModel> constructors,
+			List<FieldModel> fields,
+			List<MethodModel> methods,
+			List<RelationModel> relations) {
+		super();
+		this.projectContext = projectContext;
+		this.name = name;
+		this.modifiers = modifiers;
+		this.constructors = constructors;
+		this.fields = fields;
+		this.methods = methods;
+		this.relations = relations;
+	}
+
+	
+
+	public ClassModel(ProjectContext projectContext, String name, int modifiers) {
+		super();
+		this.projectContext = projectContext;
+		this.name = name;
+		this.modifiers = modifiers;
+		initLists();
+	}
+
+
+	private void initLists() {
+		this.constructors = new Vector<ConstructorModel>();
+		this.fields = new Vector<FieldModel>();
+		this.methods = new Vector<MethodModel>();
+		this.relations = new Vector<RelationModel>();
+		this.pendingFields = new Vector<Field>();
+	}
 
 	public void resolveRelations() {
 		//adding inhertiance relation if superclass is within the project.
 		Class<?> superclass = reflectClass.getSuperclass();
-		if((!reflectClass.equals(Object.class)) && projectContext.isLoaded(superclass)) {
-			ClassModel superclassModel = projectContext.getLoadedClassModel(superclass);
+		if((!reflectClass.equals(Object.class)) && projectContext.isLoaded(superclass.getName())) {
+			ClassModel superclassModel = projectContext.getLoadedClassModel(superclass.getName());
 			RelationModel newRelation = new RelationModel(this, superclassModel, 3);
 			relations.add(newRelation);
 			projectContext.addRelation(newRelation);
@@ -75,8 +111,8 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 		//adding relations for implemented classes
 		Class<?>[] implementedInterfaces = reflectClass.getInterfaces();
 		for (Class<?> interf : implementedInterfaces) {
-			if(projectContext.isLoaded(interf)) {
-				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedInterfaceModel(interf), 4);
+			if(projectContext.isLoaded(interf.getName())) {
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedInterfaceModel(interf.getName()), 4);
 				relations.add(newRelation);
 				projectContext.addRelation(newRelation);
 			}
@@ -86,8 +122,8 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 		for (Field f : pendingFields) {
 			Class<?> fieldType = f.getType();
 			//TODO: add support for collections.
-			if(projectContext.isLoaded(fieldType)) {
-				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(fieldType));
+			if(projectContext.isLoaded(fieldType.getName())) {
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(fieldType.getName()));
 				relations.add(newRelation);
 				projectContext.addRelation(newRelation);
 			} else {
@@ -96,21 +132,33 @@ public class ClassModel implements UMLModelEntity, RelationEntity{
 		}
 	}	
 
+	public void addConstructor(ConstructorModel constructor) {
+		constructors.add(constructor);
+	}
+	
+	public void addField(FieldModel field) {
+		fields.add(field);
+	}
+	
+	public void addMethod(MethodModel method) {
+		methods.add(method);
+	}
+	
+	public void addRelation(RelationModel relation) {
+		relations.add(relation);
+		projectContext.addRelation(relation);
+	}
+	
 	@Override
 	public XMLElement getElementModel(XMLElementGenerator generator) {
 		return generator.generate(this);
 	}
-	
-	@Override
-	public Class<?> getReflectClass() {
-		return reflectClass;
-	}
 
 	@Override
-	@SimpleElement(value="name", order=1)
+	@SimpleElement(value="name", order=0)
 	public String getName() {
 		return name;
-	}	
+	}
 
 	@SimpleElement(value="modifiers", order=2)
 	public int getModifiers() {

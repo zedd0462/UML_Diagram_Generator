@@ -1,8 +1,8 @@
 package org.mql.java.umlgen.models;
 
+import static org.mql.java.umlgen.utils.StringUtils.*;
+
 import java.lang.reflect.Field;
-import java.util.List;
-import java.util.Vector;
 
 import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
@@ -15,13 +15,18 @@ public class FieldModel implements UMLModelEntity{
 	private String name;
 	private String returnType;
 	private int modifiers;
-	private Field reflectField;
 
 	public FieldModel(Field field) {
-		this.reflectField = field;
 		this.name = field.getName();
 		this.returnType = field.getType().getName();
 		modifiers = field.getModifiers();
+	}
+	
+	public FieldModel(String name, String returnType, int modifiers) {
+		super();
+		this.name = name;
+		this.returnType = returnType;
+		this.modifiers = modifiers;
 	}
 
 	@Override
@@ -44,8 +49,13 @@ public class FieldModel implements UMLModelEntity{
 		return modifiers;
 	}
 	
-	public Field getReflectField() {
-		return reflectField;
+	@Override
+	public String toString() {
+		String fieldString = "";
+		fieldString += getAccessModifierSymbol(modifiers) + " ";
+		fieldString += name + " : ";
+		fieldString += getClassShortName(returnType);
+		return fieldString;
 	}
 
 	
