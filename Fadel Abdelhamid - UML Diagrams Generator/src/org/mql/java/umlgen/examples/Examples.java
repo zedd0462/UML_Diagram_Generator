@@ -10,9 +10,9 @@ import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
 import org.mql.java.umlgen.models.ProjectModel;
 import org.mql.java.umlgen.ui.ClassVisual;
-import org.mql.java.umlgen.xml.CustomGenerator;
-import org.mql.java.umlgen.xml.DOMGenerator;
-import org.mql.java.umlgen.xml.XMLElement;
+import org.mql.java.umlgen.xml.generators.CustomGenerator;
+import org.mql.java.umlgen.xml.generators.DOMGenerator;
+import org.mql.java.umlgen.xml.generators.XMLElement;
 
 /**
  * Class to test examples and discovered techniques.

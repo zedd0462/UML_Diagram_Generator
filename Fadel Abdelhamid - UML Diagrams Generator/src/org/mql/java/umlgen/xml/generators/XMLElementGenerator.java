@@ -1,4 +1,4 @@
-package org.mql.java.umlgen.xml;
+package org.mql.java.umlgen.xml.generators;
 
 import org.mql.java.umlgen.models.UMLModelEntity;
 

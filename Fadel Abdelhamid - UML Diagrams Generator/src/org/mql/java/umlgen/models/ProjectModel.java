@@ -11,8 +11,8 @@ import java.util.Vector;
 import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
 import org.mql.java.umlgen.exceptions.NotValidProjectException;
-import org.mql.java.umlgen.xml.XMLElement;
-import org.mql.java.umlgen.xml.XMLElementGenerator;
+import org.mql.java.umlgen.xml.generators.XMLElement;
+import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="project")
 public class ProjectModel implements UMLModelEntity{
