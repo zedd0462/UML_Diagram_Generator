@@ -13,37 +13,51 @@ import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 public class AnnotationModel implements RelationEntity{
 	
 	//TODO finish this
+	ProjectContext projectContext;
 	private String name;
-	private String simpleName;
+	int modifiers;
 	private List<MethodModel> methods;
+	private List<RelationModel> relations;
 
-	public AnnotationModel(Class<?> annotation) {
-		this.name = annotation.getName();
-		this.simpleName = annotation.getSimpleName();
+	public AnnotationModel(ProjectContext projectContext, Class<?> annotation) {
+		this.projectContext = projectContext;
+		name = annotation.getName();
+		modifiers = annotation.getModifiers();
 		methods = new Vector<MethodModel>();
 		for (Method m : annotation.getMethods()) {
 			methods.add(new MethodModel(m));
 		}
+		relations = new Vector<RelationModel>();
 	}
 	
 	
 	
-	public AnnotationModel(String name, String simpleName, List<MethodModel> methods) {
+	public AnnotationModel(ProjectContext projectContext, String name, int modifiers, List<MethodModel> methods, List<RelationModel> relations) {
 		super();
+		this.projectContext = projectContext;
 		this.name = name;
-		this.simpleName = simpleName;
+		this.modifiers = modifiers;
 		this.methods = methods;
+		this.relations = relations;
+
 	}
 	
-	public AnnotationModel(String name, String simpleName) {
+	public AnnotationModel(ProjectContext projectContext, String name, int modifiers) {
 		super();
+		this.projectContext = projectContext;
 		this.name = name;
-		this.simpleName = simpleName;
+		this.modifiers = modifiers;
 		this.methods = new Vector<MethodModel>();
+		this.relations = new Vector<RelationModel>();
 	}
 	
 	public void addMethod(MethodModel method){
 		methods.add(method);
+	}
+	
+	public void addRelation(RelationModel relation) {
+		relations.add(relation);
+		projectContext.addRelation(relation);
 	}
 
 	public void resolveRelations() {
@@ -62,14 +76,14 @@ public class AnnotationModel implements RelationEntity{
 		return name;
 	}
 	
-	@SimpleElement(value="simple-name", order=1)
-	public String getSimpleName() {
-		return simpleName;
-	}
-	
-	@ComplexElement(value="methods", order=2)
+	@ComplexElement(value="methods", order=1)
 	public List<MethodModel> getMethods() {
 		return methods;
+	}
+	
+	@ComplexElement(value="relations", order=2)
+	public List<RelationModel> getRelations() {
+		return relations;
 	}
 	
 	

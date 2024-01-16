@@ -33,7 +33,7 @@ public class DefaultPackageModel extends PackageModel {
 					try {
 						Class<?> clazz = Class.forName(name + "." + className);
 						if (clazz.isAnnotation()) {
-							annotations.add(new AnnotationModel(clazz));
+							annotations.add(new AnnotationModel(projectContext, clazz));
 						} else if (clazz.isInterface()) {
 							interfaces.add(new InterfaceModel(projectContext, clazz));
 						} else {

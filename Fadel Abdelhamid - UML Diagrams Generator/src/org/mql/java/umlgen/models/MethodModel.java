@@ -56,7 +56,7 @@ public class MethodModel implements UMLModelEntity{
 		return generator.generate(this);
 	}
 
-	@ComplexElement(value="parametres", order=3)
+	@ComplexElement(value="parameters", order=3)
 	public List<ParameterModel> getParameters() {
 		return parameters;
 	}

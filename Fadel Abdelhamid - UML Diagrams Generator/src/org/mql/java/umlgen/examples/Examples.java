@@ -13,6 +13,7 @@ import org.mql.java.umlgen.ui.ClassVisual;
 import org.mql.java.umlgen.xml.generators.CustomGenerator;
 import org.mql.java.umlgen.xml.generators.DOMGenerator;
 import org.mql.java.umlgen.xml.generators.XMLElement;
+import org.mql.java.umlgen.xml.parsers.ModelsParser;
 
 /**
  * Class to test examples and discovered techniques.
@@ -20,7 +21,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 public class Examples {
 
 	public Examples() {
-		exp05();
+		exp07();
 	}
 	
 	class testClass {
@@ -108,6 +109,19 @@ public class Examples {
 		frame.setSize(200,200);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	
+	public void exp07() {
+		System.out.println("exp05");
+		exp05();
+		System.out.println("exp07");
+		ModelsParser parser = new ModelsParser();
+		ProjectModel project = parser.parse("resources/dump.xml");
+		System.out.println("parsed");
+		DOMGenerator generator = new DOMGenerator(project.getElementModel(new CustomGenerator()), "uml-diagram");
+		generator.dump("resources/redump.xml");
+		System.out.println("dumped");
+		
 	}
 	
 	public static void main(String[] args) {

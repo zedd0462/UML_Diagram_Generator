@@ -108,7 +108,7 @@ public class PackageModel implements UMLModelEntity{
 					try {
 						Class<?> clazz = projectContext.getClassloader().loadClass(name + "."  + className);
 						if (clazz.isAnnotation()) {
-							AnnotationModel model = new AnnotationModel(clazz);
+							AnnotationModel model = new AnnotationModel(projectContext, clazz);
 							annotations.add(model);
 							projectContext.addAnnotation(model);
 						} else if (clazz.isInterface()) {

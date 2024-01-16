@@ -46,12 +46,12 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>org.mql.java.generics.List</type>
+                                                                <name>org.mql.java.generics.List</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>org.mql.java.generics.List</type>
+                                                                <name>org.mql.java.generics.List</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>12</modifiers>
@@ -61,8 +61,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -78,8 +78,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -89,8 +89,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -100,12 +100,12 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -127,8 +127,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -138,8 +138,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -161,8 +161,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -172,8 +172,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -199,8 +199,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -228,8 +228,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -251,8 +251,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -262,8 +262,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -273,8 +273,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -284,8 +284,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -355,8 +355,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>[Ljava.lang.String;</type>
+                                                                <name>[Ljava.lang.String;</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>9</modifiers>
@@ -372,8 +372,8 @@
                                                         <name>org.mql.java.generics.LinkedList</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>org.mql.java.generics.List</type>
+                                                                <name>org.mql.java.generics.List</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -382,8 +382,8 @@
                                                         <name>org.mql.java.generics.LinkedList</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -407,8 +407,8 @@
                                                         <return>java.lang.StringBuffer</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.StringBuffer</type>
+                                                                <name>java.lang.StringBuffer</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>2</modifiers>
@@ -418,8 +418,8 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -435,8 +435,8 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -452,8 +452,8 @@
                                                         <return>int</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -469,8 +469,8 @@
                                                         <return>int</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -486,8 +486,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -497,12 +497,12 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -512,12 +512,12 @@
                                                         <return>org.mql.java.generics.List</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -533,8 +533,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.util.Comparator</type>
+                                                                <name>java.util.Comparator</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -574,8 +574,8 @@
                                                         <name>org.mql.java.generics.LinkedListSet</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -600,8 +600,8 @@
                                                         <name>org.mql.java.generics.ListIterator</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>org.mql.java.generics.List</type>
+                                                                <name>org.mql.java.generics.List</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -661,8 +661,8 @@
                                                         <name>org.mql.java.generics.SetIterator</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>org.mql.java.generics.Set</type>
+                                                                <name>org.mql.java.generics.Set</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -738,8 +738,8 @@
                                                         <name>org.mql.java.generics.Vector</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>org.mql.java.generics.List</type>
+                                                                <name>org.mql.java.generics.List</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -758,8 +758,8 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -775,8 +775,8 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -792,8 +792,8 @@
                                                         <return>int</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -809,8 +809,8 @@
                                                         <return>int</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -826,12 +826,12 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -841,8 +841,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -852,12 +852,12 @@
                                                         <return>org.mql.java.generics.List</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -873,12 +873,12 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -888,8 +888,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.util.Comparator</type>
+                                                                <name>java.util.Comparator</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -923,8 +923,8 @@
                                                         <name>org.mql.java.generics.VectorSet</name>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1</modifiers>
@@ -953,8 +953,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -964,8 +964,8 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -981,8 +981,8 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -992,8 +992,8 @@
                                                         <return>int</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1009,8 +1009,8 @@
                                                         <return>int</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1026,8 +1026,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1037,12 +1037,12 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1052,12 +1052,12 @@
                                                         <return>org.mql.java.generics.List</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1073,8 +1073,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1084,8 +1084,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1095,12 +1095,12 @@
                                                         <return>java.lang.Object</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>int</type>
+                                                                <name>int</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                             <parameter>
-                                                                <name>arg1</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg1</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1110,8 +1110,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.util.Comparator</type>
+                                                                <name>java.util.Comparator</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1133,8 +1133,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1144,8 +1144,8 @@
                                                         <return>void</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1167,8 +1167,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1184,8 +1184,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1203,8 +1203,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1232,8 +1232,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1249,8 +1249,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Object</type>
+                                                                <name>java.lang.Object</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1260,8 +1260,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1271,8 +1271,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1282,8 +1282,8 @@
                                                         <return>boolean</return>
                                                         <parameters>
                                                             <parameter>
-                                                                <name>arg0</name>
-                                                                <type>java.lang.Iterable</type>
+                                                                <name>java.lang.Iterable</name>
+                                                                <type>arg0</type>
                                                             </parameter>
                                                         </parameters>
                                                         <modifiers>1025</modifiers>
@@ -1309,8 +1309,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>java.util.Vector</type>
+                                                                        <name>java.util.Vector</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>1</modifiers>
@@ -1351,8 +1351,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>java.util.Vector</type>
+                                                                        <name>java.util.Vector</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>1</modifiers>
@@ -1402,8 +1402,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>[Ljava.lang.String;</type>
+                                                                        <name>[Ljava.lang.String;</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>9</modifiers>
@@ -1466,12 +1466,12 @@
                                                                 <return>int</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>java.lang.Integer</type>
+                                                                        <name>java.lang.Integer</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                     <parameter>
-                                                                        <name>arg1</name>
-                                                                        <type>java.lang.Integer</type>
+                                                                        <name>java.lang.Integer</name>
+                                                                        <type>arg1</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>1</modifiers>
@@ -1481,12 +1481,12 @@
                                                                 <return>int</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>java.lang.Object</type>
+                                                                        <name>java.lang.Object</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                     <parameter>
-                                                                        <name>arg1</name>
-                                                                        <type>java.lang.Object</type>
+                                                                        <name>java.lang.Object</name>
+                                                                        <type>arg1</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>4161</modifiers>
@@ -1512,12 +1512,12 @@
                                                                 <return>int</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>java.lang.Integer</type>
+                                                                        <name>java.lang.Integer</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                     <parameter>
-                                                                        <name>arg1</name>
-                                                                        <type>java.lang.Integer</type>
+                                                                        <name>java.lang.Integer</name>
+                                                                        <type>arg1</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>1</modifiers>
@@ -1527,12 +1527,12 @@
                                                                 <return>int</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>java.lang.Object</type>
+                                                                        <name>java.lang.Object</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                     <parameter>
-                                                                        <name>arg1</name>
-                                                                        <type>java.lang.Object</type>
+                                                                        <name>java.lang.Object</name>
+                                                                        <type>arg1</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>4161</modifiers>
@@ -1570,8 +1570,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>org.mql.java.generics.List</type>
+                                                                        <name>org.mql.java.generics.List</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>4106</modifiers>
@@ -1581,8 +1581,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>org.mql.java.generics.List</type>
+                                                                        <name>org.mql.java.generics.List</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>4106</modifiers>
@@ -1592,8 +1592,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>org.mql.java.generics.List</type>
+                                                                        <name>org.mql.java.generics.List</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>4106</modifiers>
@@ -1924,8 +1924,8 @@
                                                                 <return>void</return>
                                                                 <parameters>
                                                                     <parameter>
-                                                                        <name>arg0</name>
-                                                                        <type>[Ljava.lang.String;</type>
+                                                                        <name>[Ljava.lang.String;</name>
+                                                                        <type>arg0</type>
                                                                     </parameter>
                                                                 </parameters>
                                                                 <modifiers>9</modifiers>

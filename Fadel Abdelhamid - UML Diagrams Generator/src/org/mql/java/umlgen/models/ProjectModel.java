@@ -24,6 +24,9 @@ public class ProjectModel implements UMLModelEntity{
 	private DefaultPackageModel defaultPackage;
 	private URLClassLoader classLoader;
 
+	protected ProjectModel() {
+		
+	}
 	
 	public ProjectModel(String projectPath, String projectName) throws NotValidProjectException{
 		this(projectPath);
@@ -79,6 +82,23 @@ public class ProjectModel implements UMLModelEntity{
 		for (RelationEntity entity : Entities) {
 			entity.resolveRelations();
 		}
+	}
+	
+	public static ProjectModel getInstanceForParser(String name, String path) {
+		ProjectModel project = new ProjectModel();
+		project.name = name;
+		project.path = path;
+		project.packages = new Vector<PackageModel>();
+		project.projectContext = new ProjectContext(project);
+		return project;
+	}
+	
+	public void addPackage(PackageModel pkg) {
+		packages.add(pkg);
+	}
+	
+	public ProjectContext getProjectContext() {
+		return projectContext;
 	}
 	
 	@SimpleElement(value="name", order=1)
