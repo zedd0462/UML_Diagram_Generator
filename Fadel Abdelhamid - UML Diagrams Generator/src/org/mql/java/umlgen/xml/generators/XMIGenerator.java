@@ -1,6 +1,6 @@
 package org.mql.java.umlgen.xml.generators;
 
-import org.mql.java.umlgen.models.UMLModelEntity;
+import org.mql.java.umlgen.models.Model;
 
 public class XMIGenerator implements XMLElementGenerator {
 	//TODO: do this
@@ -9,7 +9,7 @@ public class XMIGenerator implements XMLElementGenerator {
 	}
 
 	@Override
-	public XMLElement generate(UMLModelEntity model) {
+	public XMLElement generate(Model model) {
 		return null;
 	}
 

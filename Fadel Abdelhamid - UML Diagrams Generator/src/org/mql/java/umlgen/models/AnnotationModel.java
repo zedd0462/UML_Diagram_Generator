@@ -10,7 +10,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="annotation")
-public class AnnotationModel implements RelationEntity{
+public class AnnotationModel implements Entity{
 	
 	//TODO finish this
 	ProjectContext projectContext;

@@ -1,6 +1,6 @@
 package org.mql.java.umlgen.xml.generators;
 
-import org.mql.java.umlgen.models.UMLModelEntity;
+import org.mql.java.umlgen.models.Model;
 
 /**
  * An interface that provides generator of XMLElement from an UMLModelEntity.
@@ -11,5 +11,5 @@ public interface XMLElementGenerator {
 	 * @param model The UMLModelEntity to generate XML from.
 	 * @return Returns the generated XMLElement element.
 	 */
-	public XMLElement generate(UMLModelEntity model);
+	public XMLElement generate(Model model);
 }

@@ -12,7 +12,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="class")
-public class ClassModel implements UMLModelEntity, RelationEntity{
+public class ClassModel implements Model, Entity{
 	
 	
 	//TODO: not complete

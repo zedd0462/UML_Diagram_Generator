@@ -6,6 +6,6 @@ import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 /**
  * Represents an entity in an UML model.
  */
-public interface UMLModelEntity {
+public interface Model {
 	public XMLElement getElementModel(XMLElementGenerator generator);
 }

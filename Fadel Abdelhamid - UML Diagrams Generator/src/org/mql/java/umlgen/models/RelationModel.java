@@ -9,7 +9,7 @@ import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 
 @ComplexElement(value="relation")
-public class RelationModel implements UMLModelEntity {
+public class RelationModel implements Model {
 	
 	
 	public final static int ASSOCIATION = 0;
@@ -24,18 +24,18 @@ public class RelationModel implements UMLModelEntity {
 	private int relationType;
 	private String cardinality = "N/A";
 
-	public RelationModel(RelationEntity source, RelationEntity target) {
+	public RelationModel(Entity source, Entity target) {
 		this.source = source.getName();
 		this.target = target.getName();
 		this.relationType = 0; //If not specified it is an association
 	}
 	
-	public RelationModel(RelationEntity source, RelationEntity target, int relationType) {
+	public RelationModel(Entity source, Entity target, int relationType) {
 		this(source, target);
 		this.relationType = relationType;
 	}
 	
-	public RelationModel(RelationEntity source, RelationEntity target, int relationType, String cardinality) {
+	public RelationModel(Entity source, Entity target, int relationType, String cardinality) {
 		this(source, target);
 		this.relationType = relationType;
 		this.cardinality = cardinality;

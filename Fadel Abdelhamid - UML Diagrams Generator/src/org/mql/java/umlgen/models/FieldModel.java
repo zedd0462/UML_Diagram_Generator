@@ -10,7 +10,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="field")
-public class FieldModel implements UMLModelEntity{
+public class FieldModel implements Model{
 	
 	private String name;
 	private String returnType;

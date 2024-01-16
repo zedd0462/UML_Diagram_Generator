@@ -13,7 +13,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement("method")
-public class MethodModel implements UMLModelEntity{
+public class MethodModel implements Model{
 	
 	//private AnnotationModel[] annotations;
 	private String name;

@@ -105,7 +105,7 @@ public class ProjectContext {
 		return loadedAnnotations.get(annotationName);
 	}
 	
-	public RelationEntity getLoadedRelationEntity(String classname) {
+	public Entity getLoadedRelationEntity(String classname) {
 		if (loadedAnnotations.containsKey(classname)) {
 			return getLoadedAnnotationModel(classname);
 		}

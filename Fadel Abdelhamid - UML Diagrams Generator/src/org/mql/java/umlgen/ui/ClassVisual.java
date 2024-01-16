@@ -32,12 +32,13 @@ public class ClassVisual extends JPanel{
 	private List<String> constructors;
 	
 	private static final int DEFAULT_WIDTH = 100;
-	private static final int DEFAULT_HEIGHT = 300;
+	private static final int DEFAULT_HEIGHT = 100;
 	private static final int VERTICAL_SPACER = 20;
 	private static final int TITLE_BOX_HEIGHT = 30;
 	private static final int X_MARGIN = 10;
 	private int width;
 	private int height;
+	private int estimatedfontHeight;
 	
 	private Font font;
 	private FontMetrics fontmetrics;
@@ -48,8 +49,9 @@ public class ClassVisual extends JPanel{
 		fields = new Vector<String>();
 		methods = new Vector<String>();
 		constructors = new Vector<String>();
-		font = new Font("Times New Roman",Font.BOLD, 16);
+		font = new Font("Times New Roman",Font.BOLD, 13);
 		fontmetrics = new Canvas().getFontMetrics(font);
+		estimatedfontHeight = (fontmetrics.getHeight() / 2) + 2;
 		width = DEFAULT_WIDTH;
 		height = DEFAULT_HEIGHT;
 	}
@@ -68,7 +70,7 @@ public class ClassVisual extends JPanel{
 		
 		
 		int entityNameWidth =  fontmetrics.stringWidth(entityName);
-		int entityNameHeight = (fontmetrics.getHeight() / 2) + 2;//for some reason this returns almost double the height ??
+		int entityNameHeight = estimatedfontHeight;//for some reason this returns almost double the height ??
 		
 		
 		g.setColor(Color.white);
@@ -105,7 +107,6 @@ public class ClassVisual extends JPanel{
 			currentPrintingY += VERTICAL_SPACER;
 			g.drawString(string, X_MARGIN, currentPrintingY);
 		}
-		
 	}
 	
 	private void initGraphics(Graphics g) {
@@ -121,7 +122,7 @@ public class ClassVisual extends JPanel{
 	
 	private void initStrings() {
 		int width = DEFAULT_WIDTH;
-		int height = DEFAULT_HEIGHT;
+		int height = 0;
 		int currentElementWidth = 0;
 		List<FieldModel> fieldModels = classModel.getFields();
 		for (FieldModel fieldModel : fieldModels) {
@@ -140,6 +141,7 @@ public class ClassVisual extends JPanel{
 			if (currentElementWidth > width) {
 				width = currentElementWidth;
 			}
+			
 		}
 		List<ConstructorModel> constructorModels = classModel.getConstructors();
 		for (ConstructorModel constructorModel : constructorModels) {
@@ -150,9 +152,11 @@ public class ClassVisual extends JPanel{
 				width = currentElementWidth;
 			}
 		}
+		
+		int totalElementCount = constructorModels.size() + methodModels.size() + fieldModels.size();
+		height = (totalElementCount * estimatedfontHeight) + ((totalElementCount) * VERTICAL_SPACER);
+		this.height = height > DEFAULT_HEIGHT ? height : DEFAULT_HEIGHT;
 		this.width = width;
-		//TODO: fix bug in display
-		//do height
 	}
 	
 	@Override

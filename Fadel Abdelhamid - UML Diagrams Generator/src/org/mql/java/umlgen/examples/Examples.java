@@ -5,6 +5,7 @@ import java.lang.reflect.Parameter;
 
 import javax.swing.JFrame;
 
+import org.mql.java.umlgen.fakemodels.ExampleClassTest;
 import org.mql.java.umlgen.models.ClassModel;
 import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
@@ -21,7 +22,7 @@ import org.mql.java.umlgen.xml.parsers.ModelsParser;
 public class Examples {
 
 	public Examples() {
-		exp07();
+		exp06();
 	}
 	
 	class testClass {
@@ -101,7 +102,7 @@ public class Examples {
 	}
 	
 	public void exp06() {
-		ClassModel classModel = new ClassModel(null, testClass2.class);
+		ClassModel classModel = new ClassModel(null, ExampleClassTest.class);
 		ClassVisual classVisual = new ClassVisual(classModel);
 		JFrame frame = new JFrame("Class Visualization");
 		frame.setContentPane(classVisual);

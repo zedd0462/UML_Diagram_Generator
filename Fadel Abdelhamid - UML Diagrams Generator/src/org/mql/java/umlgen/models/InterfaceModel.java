@@ -11,7 +11,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="interface")
-public class InterfaceModel implements RelationEntity {
+public class InterfaceModel implements Entity {
 	private ProjectContext projectContext;
 	private String name;
 	private int modifiers;

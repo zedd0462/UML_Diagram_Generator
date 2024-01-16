@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
-import org.mql.java.umlgen.models.UMLModelEntity;
+import org.mql.java.umlgen.models.Model;
 
 /**
  * A Producer class to produce XMLElement from an 
@@ -20,7 +20,7 @@ public class CustomGenerator implements XMLElementGenerator {
 	}
 
 	@Override
-	public XMLElement generate(UMLModelEntity model) {
+	public XMLElement generate(Model model) {
 		try {
 			String title = model.getClass().getDeclaredAnnotation(ComplexElement.class).value();
 			XMLElement element = new XMLElement(title);
@@ -48,14 +48,14 @@ public class CustomGenerator implements XMLElementGenerator {
 				if(ce != null) {
 					XMLElement subElement;
 					if(ce.value().equals("-1")) {
-						UMLModelEntity m = (UMLModelEntity) method.invoke(model, new Object[]{});
+						Model m = (Model) method.invoke(model, new Object[]{});
 						subElement = m.getElementModel(this);
 						element.addChildren(subElement);
 					}else {
 						subElement = new XMLElement(ce.value());
 						@SuppressWarnings("unchecked")
-						List<? extends UMLModelEntity> subSubElements = (List<? extends UMLModelEntity>) method.invoke(model, new Object[]{});
-						for (UMLModelEntity m : subSubElements) {
+						List<? extends Model> subSubElements = (List<? extends Model>) method.invoke(model, new Object[]{});
+						for (Model m : subSubElements) {
 							subElement.addChildren(m.getElementModel(this));
 						}
 						element.addChildren(subElement);

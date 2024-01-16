@@ -8,7 +8,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="parameter")
-public class ParameterModel implements UMLModelEntity {
+public class ParameterModel implements Model {
 	
 	private String type;
 	private String name;

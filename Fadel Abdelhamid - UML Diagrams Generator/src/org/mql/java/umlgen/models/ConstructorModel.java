@@ -13,7 +13,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement("constructor")
-public class ConstructorModel implements UMLModelEntity{
+public class ConstructorModel implements Model{
 	
 	private String name;
 	private List<ParameterModel> parameters;

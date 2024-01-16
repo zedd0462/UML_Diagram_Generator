@@ -10,7 +10,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="package")
-public class PackageModel implements UMLModelEntity{
+public class PackageModel implements Model{
 	
 	protected ProjectContext projectContext;
 	protected String name;

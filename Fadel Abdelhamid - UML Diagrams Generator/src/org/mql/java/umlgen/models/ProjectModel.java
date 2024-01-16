@@ -15,7 +15,7 @@ import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
 @ComplexElement(value="project")
-public class ProjectModel implements UMLModelEntity{
+public class ProjectModel implements Model{
 	
 	private String name = "";
 	private String path;
@@ -75,11 +75,11 @@ public class ProjectModel implements UMLModelEntity{
 	
 	public void resolveRelations() {
 		//TODO: can be optimized
-		Collection<RelationEntity> Entities = new Vector<RelationEntity>();
+		Collection<Entity> Entities = new Vector<Entity>();
 		Entities.addAll(projectContext.getLoadedClasses().values());
 		Entities.addAll(projectContext.getLoadedInterfaces().values());
 		Entities.addAll(projectContext.getLoadedAnnotations().values());
-		for (RelationEntity entity : Entities) {
+		for (Entity entity : Entities) {
 			entity.resolveRelations();
 		}
 	}
