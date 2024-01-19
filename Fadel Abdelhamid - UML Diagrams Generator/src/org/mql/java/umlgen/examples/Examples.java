@@ -6,11 +6,14 @@ import java.lang.reflect.Parameter;
 import javax.swing.JFrame;
 
 import org.mql.java.umlgen.fakemodels.ExampleClassTest;
+import org.mql.java.umlgen.fakemodels.ExampleInterfaceTest;
 import org.mql.java.umlgen.models.ClassModel;
+import org.mql.java.umlgen.models.InterfaceModel;
 import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
 import org.mql.java.umlgen.models.ProjectModel;
 import org.mql.java.umlgen.ui.ClassVisual;
+import org.mql.java.umlgen.ui.InterfaceVisual;
 import org.mql.java.umlgen.xml.generators.CustomGenerator;
 import org.mql.java.umlgen.xml.generators.DOMGenerator;
 import org.mql.java.umlgen.xml.generators.XMLElement;
@@ -23,6 +26,7 @@ public class Examples {
 
 	public Examples() {
 		exp06();
+		exp07();
 	}
 	
 	class testClass {
@@ -113,6 +117,17 @@ public class Examples {
 	}
 	
 	public void exp07() {
+		InterfaceModel interf = new InterfaceModel(null, ExampleInterfaceTest.class);
+		InterfaceVisual interfaceVisual = new InterfaceVisual(interf);
+		JFrame frame = new JFrame("Class Visualization");
+		frame.setContentPane(interfaceVisual);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(200,200);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public void exp08() {
 		System.out.println("exp05");
 		exp05();
 		System.out.println("exp07");
