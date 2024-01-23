@@ -3,6 +3,7 @@ package org.mql.java.umlgen.models;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.List;
 import java.util.Vector;
 
@@ -123,7 +124,7 @@ public class ClassModel implements Model, Entity{
 			Class<?> fieldType = f.getType();
 			//TODO: add support for collections.
 			if(projectContext.isLoaded(fieldType.getName())) {
-				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(fieldType.getName()));
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(fieldType.getName()));
 				relations.add(newRelation);
 				projectContext.addRelation(newRelation);
 			} else {
@@ -147,6 +148,10 @@ public class ClassModel implements Model, Entity{
 	public void addRelation(RelationModel relation) {
 		relations.add(relation);
 		projectContext.addRelation(relation);
+	}
+	
+	public boolean isAbstract() {
+		return Modifier.isAbstract(modifiers);
 	}
 	
 	@Override

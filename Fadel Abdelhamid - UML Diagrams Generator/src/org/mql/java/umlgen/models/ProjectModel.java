@@ -10,7 +10,7 @@ import java.util.Vector;
 
 import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
-import org.mql.java.umlgen.exceptions.NotValidProjectException;
+import org.mql.java.umlgen.exceptions.ProjectNotValidException;
 import org.mql.java.umlgen.xml.generators.XMLElement;
 import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 
@@ -28,12 +28,12 @@ public class ProjectModel implements Model{
 		
 	}
 	
-	public ProjectModel(String projectPath, String projectName) throws NotValidProjectException{
+	public ProjectModel(String projectPath, String projectName) throws ProjectNotValidException{
 		this(projectPath);
 		this.name = projectName;
 	}
 
-	public ProjectModel(String projectPath) throws NotValidProjectException {
+	public ProjectModel(String projectPath) throws ProjectNotValidException {
 		this.path = projectPath;
 		projectContext = new ProjectContext(this);
 		packages = new Vector<PackageModel>();
@@ -55,7 +55,7 @@ public class ProjectModel implements Model{
 				e.printStackTrace();
 			}
 		}else{
-			throw new NotValidProjectException();
+			throw new ProjectNotValidException();
 		}
 		File[] files = file.listFiles();
 		for (File f : files) {
@@ -66,6 +66,8 @@ public class ProjectModel implements Model{
 			} 
 		}
 		resolveRelations();
+		projectContext.processInhertiance();
+		
 	}
 
 	@Override

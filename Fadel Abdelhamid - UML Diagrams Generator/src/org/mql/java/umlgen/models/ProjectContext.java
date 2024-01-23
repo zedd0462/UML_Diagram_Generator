@@ -13,6 +13,7 @@ public class ProjectContext {
 	private Map<String, InterfaceModel> loadedInterfaces;
 	private Map<String, AnnotationModel> loadedAnnotations;
 	private Map<String, PackageModel> loadedPackages;
+	private Map<String, Integer> classesInhertianceLevel;
 	private List<RelationModel> relations;
 	
 	private URLClassLoader classloader;
@@ -27,6 +28,7 @@ public class ProjectContext {
 		loadedInterfaces = new Hashtable<String, InterfaceModel>();
 		loadedAnnotations = new Hashtable<String, AnnotationModel>();
 		loadedPackages = new Hashtable<String, PackageModel>();
+		classesInhertianceLevel = new Hashtable<String, Integer>();
 		relations = new Vector<RelationModel>();
 	}
 	
@@ -78,21 +80,14 @@ public class ProjectContext {
 		return loadedAnnotations;
 	}
 	
-	/**
-	 * Returns boolean value if the class has been loaded in the project
-	 * that this context belongs to.
-	 * @param clazz Reflect class object
-	 * @return If the class is loaded.
-	 */
+	public Map<String, PackageModel> getLoadedPackages() {
+		return loadedPackages;
+	}
+	
 	public boolean isLoaded(String classname) {
 		return loadedClasses.containsKey(classname) || loadedInterfaces.containsKey(classname) || loadedAnnotations.containsKey(classname);
 	}
 	
-	/**
-	 * Returns ClassModel representation from a reflect class if it's loaded in the project.
-	 * @param clazz Reflect class object
-	 * @return The Corresponding ClassModel
-	 */
 	public ClassModel getLoadedClassModel(String classname) {
 		return loadedClasses.get(classname);
 	}
@@ -105,7 +100,11 @@ public class ProjectContext {
 		return loadedAnnotations.get(annotationName);
 	}
 	
-	public Entity getLoadedRelationEntity(String classname) {
+	public PackageModel getLoadedPackageModel(String packageName) {
+		return loadedPackages.get(packageName);
+	}
+	
+	public Entity getLoadedEntity(String classname) {
 		if (loadedAnnotations.containsKey(classname)) {
 			return getLoadedAnnotationModel(classname);
 		}
@@ -113,6 +112,41 @@ public class ProjectContext {
 			return getLoadedInterfaceModel(classname);
 		}
 		return getLoadedClassModel(classname);
+	}
+	
+	public void processClassInheritanceLevel(ClassModel clazz) {
+		String classname = clazz.getName();
+		if (!classesInhertianceLevel.containsKey(classname)) {
+			classesInhertianceLevel.put(classname, 0);
+			for (RelationModel relationModel : clazz.getRelations()) {
+				if(	relationModel.getSourceClassString().equals(classname) &&
+					relationModel.getRelationType() == RelationModel.INHERITANCE) {
+					String superclassName = relationModel.getTargetClassString();
+					ClassModel superclass = getLoadedClassModel(superclassName);
+					processClassInheritanceLevel(superclass);
+					int superclassInheritanceLevel = classesInhertianceLevel.get(superclassName);
+					classesInhertianceLevel.put(classname, superclassInheritanceLevel + 1);
+				}
+			}
+		} //else it will be already processed
+	}
+	
+	public void processInhertiance() {
+		for (ClassModel clazz : loadedClasses.values()) {
+			processClassInheritanceLevel(clazz);
+		}
+	}
+	
+	public Map<String, Integer> getClassesInhertianceLevel() {
+		return classesInhertianceLevel;
+	}
+	
+	public int getClassInhertianceLevel(String classname) {
+		return classesInhertianceLevel.get(classname);
+	}
+	
+	public int getClassInhertianceLevel(ClassModel clazz) {
+		return classesInhertianceLevel.get(clazz.getName());
 	}
 	
 

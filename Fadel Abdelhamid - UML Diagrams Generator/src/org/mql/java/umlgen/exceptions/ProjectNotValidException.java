@@ -10,16 +10,16 @@ package org.mql.java.umlgen.exceptions;
  * <li>Directory does not have .class files including its subfolders</li>
  * </ul>
  */
-public class NotValidProjectException extends Exception {
+public class ProjectNotValidException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public NotValidProjectException() {
+	public ProjectNotValidException() {
 		super("The project path specified is not valid.");
 	}
 
 
-	public NotValidProjectException(Throwable cause) {
+	public ProjectNotValidException(Throwable cause) {
 		super("The project path specified is not valid.",cause);
 	}
 

@@ -1,7 +1,5 @@
 package org.mql.java.umlgen.models;
 
-import java.util.Map;
-
 import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
 import org.mql.java.umlgen.xml.generators.XMLElement;

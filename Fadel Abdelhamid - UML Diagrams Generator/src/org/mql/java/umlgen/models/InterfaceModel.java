@@ -89,7 +89,7 @@ public class InterfaceModel implements Entity {
 
 	public void resolveRelations() {
 		if(superclass != null && projectContext.isLoaded(superclass.getName())) {
-			RelationModel newRelation = new RelationModel(this, projectContext.getLoadedRelationEntity(superclass.getName()), 3);
+			RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(superclass.getName()), 3);
 			relations.add(newRelation);
 			projectContext.addRelation(newRelation);
 		}
