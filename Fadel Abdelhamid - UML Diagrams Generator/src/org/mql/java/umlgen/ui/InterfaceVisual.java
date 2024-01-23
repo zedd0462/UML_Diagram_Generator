@@ -5,6 +5,8 @@ import org.mql.java.umlgen.utils.StringUtils;
 
 public class InterfaceVisual extends EntityVisual{
 	
+	private static final long serialVersionUID = 1L;
+	
 	private InterfaceModel interfaceModel;
 
 	public InterfaceVisual(InterfaceModel interfaceModel) {

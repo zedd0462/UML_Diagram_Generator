@@ -1,9 +1,15 @@
 package org.mql.java.umlgen.examples;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import org.mql.java.umlgen.fakemodels.ExampleClassTest;
 import org.mql.java.umlgen.fakemodels.ExampleInterfaceTest;
@@ -12,6 +18,7 @@ import org.mql.java.umlgen.models.InterfaceModel;
 import org.mql.java.umlgen.models.MethodModel;
 import org.mql.java.umlgen.models.ParameterModel;
 import org.mql.java.umlgen.models.ProjectModel;
+import org.mql.java.umlgen.ui.ClassDiagram;
 import org.mql.java.umlgen.ui.ClassVisual;
 import org.mql.java.umlgen.ui.InterfaceVisual;
 import org.mql.java.umlgen.xml.generators.CustomGenerator;
@@ -25,8 +32,7 @@ import org.mql.java.umlgen.xml.parsers.ModelsParser;
 public class Examples {
 
 	public Examples() {
-		exp06();
-		exp07();
+		exp11();
 	}
 	
 	class testClass {
@@ -111,7 +117,7 @@ public class Examples {
 		JFrame frame = new JFrame("Class Visualization");
 		frame.setContentPane(classVisual);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(200,200);
+		frame.setSize(200, 200);
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -122,7 +128,7 @@ public class Examples {
 		JFrame frame = new JFrame("Class Visualization");
 		frame.setContentPane(interfaceVisual);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(200,200);
+		frame.setSize(200, 200);
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -138,6 +144,48 @@ public class Examples {
 		generator.dump("resources/redump.xml");
 		System.out.println("dumped");
 		
+	}
+	
+	public void exp09() {
+		JPanel panel = new JPanel(new GridLayout());
+		JScrollPane scrollpane = new JScrollPane(panel);
+		scrollpane.getVerticalScrollBar().setUnitIncrement(13);
+		scrollpane.getHorizontalScrollBar().setUnitIncrement(13);
+		scrollpane.setPreferredSize(new Dimension(800,500));
+		JFrame frame = new JFrame("UITEST");
+		panel.add(new ClassVisual(new ClassModel(null, String.class)));
+		panel.add(new ClassVisual(new ClassModel(null, ArrayList.class)));
+		panel.add(new InterfaceVisual(new InterfaceModel(null, List.class)));
+		panel.repaint();
+		frame.setContentPane(scrollpane);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(200, 200);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public void exp10() {
+		try {
+			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p04-XML Parsers/bin");
+			System.out.println(project.getProjectContext().getClassesInhertianceLevel());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void exp11() {
+		try {
+			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p04-XML Parsers/bin");
+			ClassDiagram classDiag = new ClassDiagram(project);
+			JScrollPane scrollpane = classDiag.asScrollPane(800, 600);
+			JFrame frame = new JFrame("UITEST");
+			frame.setContentPane(scrollpane);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setSize(800, 600);
+			frame.pack();
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) {

@@ -29,13 +29,17 @@ public abstract class EntityVisual extends JPanel{
 	
 	protected static final int DEFAULT_WIDTH = 100;
 	protected static final int DEFAULT_HEIGHT = 150;
-	protected static final int VERTICAL_SPACER = 20;
+	protected static final int VERTICAL_SPACER = 15;
 	protected static final int TITLE_BOX_HEIGHT = 30;
 	protected static final int X_MARGIN = 10;
+	protected static final int STROKE_SIZE = 3;
+	protected static final int FONT_SIZE = 13;
 	protected int width;
 	protected int height;
 	protected int estimatedfontHeight;
+	protected int currentPrintingX;
 	protected int currentPrintingY;
+	protected int totalElementCount;
 	
 	protected Font font;
 	protected FontMetrics fontmetrics;
@@ -56,7 +60,8 @@ public abstract class EntityVisual extends JPanel{
 		fields = new Vector<String>();
 		methods = new Vector<String>();
 		constructors = new Vector<String>();
-		font = new Font("Times New Roman",Font.BOLD, 13);
+		totalElementCount = 0;
+		font = new Font("Times New Roman",Font.BOLD, FONT_SIZE);
 		fontmetrics = new Canvas().getFontMetrics(font);
 		estimatedfontHeight = (fontmetrics.getHeight() / 2) + 2;
 		height = DEFAULT_HEIGHT;
@@ -69,13 +74,16 @@ public abstract class EntityVisual extends JPanel{
 	
 	@Override
 	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		currentPrintingX = 0;
+		currentPrintingY = 0;
 		initGraphics(g);
 		Graphics2D g2 = (Graphics2D) g;
 		
 		g.setColor(Color.white);
 		g.fillRect(0, 0, width, height);
 		g.setColor(Color.black);
-		g2.setStroke(new BasicStroke(3));
+		g2.setStroke(new BasicStroke(STROKE_SIZE));
 		g.drawRect(0, 0, width, height);
 		
 		drawTitleBox(g2);
@@ -93,14 +101,13 @@ public abstract class EntityVisual extends JPanel{
 		}
 	}
 	
-	
-	
 	protected void initFields(List<FieldModel> fieldModels) {
 		int currentElementWidth = 0;
 		for (FieldModel fieldModel : fieldModels) {
 			String fieldString = fieldModel.toString();
 			fields.add(fieldString);
-			currentElementWidth = fontmetrics.stringWidth(fieldString) + X_MARGIN * 2;
+			totalElementCount++;
+			currentElementWidth = fontmetrics.stringWidth(fieldString) + (X_MARGIN * 2);
 			if (currentElementWidth > width) {
 				width = currentElementWidth;
 			}
@@ -112,7 +119,8 @@ public abstract class EntityVisual extends JPanel{
 		for (MethodModel methodModel : methodModels) {
 			String methodString = methodModel.toString();
 			methods.add(methodString);
-			currentElementWidth = fontmetrics.stringWidth(methodString) + X_MARGIN * 2;
+			totalElementCount++;
+			currentElementWidth = fontmetrics.stringWidth(methodString) + (X_MARGIN * 2);
 			if (currentElementWidth > width) {
 				width = currentElementWidth;
 			}
@@ -124,7 +132,8 @@ public abstract class EntityVisual extends JPanel{
 		for (ConstructorModel constructorModel : constructorModels) {
 			String constructorString = constructorModel.toString();
 			constructors.add(constructorString);
-			currentElementWidth = fontmetrics.stringWidth(constructorString) + X_MARGIN * 2;
+			totalElementCount++;
+			currentElementWidth = fontmetrics.stringWidth(constructorString) + (X_MARGIN * 2);
 			if (currentElementWidth > width) {
 				width = currentElementWidth;
 			}
@@ -135,42 +144,45 @@ public abstract class EntityVisual extends JPanel{
 		int entityNameWidth =  fontmetrics.stringWidth(entityName);
 		int entityNameHeight = estimatedfontHeight;
 		g.drawLine(0, TITLE_BOX_HEIGHT, width, TITLE_BOX_HEIGHT);
-		g.setStroke(new BasicStroke());
+		g.setStroke(new BasicStroke(STROKE_SIZE));
 		g.drawString(entityName, (width / 2) - (entityNameWidth / 2), (TITLE_BOX_HEIGHT / 2) + (entityNameHeight/ 2));
-		currentPrintingY = TITLE_BOX_HEIGHT + 10;
+		currentPrintingY = TITLE_BOX_HEIGHT + VERTICAL_SPACER + STROKE_SIZE;
 	}
 	
 	protected void drawConstructors(Graphics2D g) {
-		currentPrintingY += VERTICAL_SPACER;
-		g.setStroke(new BasicStroke(3));
-		g.drawLine(0, currentPrintingY, width, currentPrintingY);
+		drawSeparatingLine(g);
 		for (String string : constructors) {
-			currentPrintingY += VERTICAL_SPACER;
 			g.drawString(string, X_MARGIN, currentPrintingY);
+			currentPrintingY +=  VERTICAL_SPACER;
 		}
 	}
 	
 	protected void drawFields(Graphics2D g) {
 		for (String string : fields) {
-			currentPrintingY += VERTICAL_SPACER;
 			g.drawString(string, X_MARGIN, currentPrintingY);
+			currentPrintingY +=  VERTICAL_SPACER;
 		}
 	}
 	
 	protected void drawMethods(Graphics2D g) {
-		currentPrintingY += VERTICAL_SPACER;
-		g.setStroke(new BasicStroke(3));
-		g.drawLine(0, currentPrintingY, width, currentPrintingY);
+		drawSeparatingLine(g);
 		for (String string : methods) {
-			currentPrintingY += VERTICAL_SPACER;
 			g.drawString(string, X_MARGIN, currentPrintingY);
+			currentPrintingY +=  VERTICAL_SPACER;
 		}
 	}
 	
+	protected void drawSeparatingLine(Graphics2D g) {
+		int toPrintY = currentPrintingY - (estimatedfontHeight / 2);
+		g.setStroke(new BasicStroke(STROKE_SIZE));
+		g.drawLine(0, toPrintY, width, toPrintY);
+		currentPrintingY += VERTICAL_SPACER + STROKE_SIZE - (estimatedfontHeight / 2);
+	}
+	
 	protected void initHeight() {
-		int totalElementCount = constructors.size() + methods.size() + fields.size();
-		int height = (totalElementCount * estimatedfontHeight) + ((totalElementCount) * VERTICAL_SPACER);
-		this.height = height > DEFAULT_HEIGHT ? height : DEFAULT_HEIGHT;
+		int tmpHeight = TITLE_BOX_HEIGHT + (VERTICAL_SPACER * 3);
+		tmpHeight += (totalElementCount * (VERTICAL_SPACER));
+		this.height = tmpHeight > DEFAULT_HEIGHT ? tmpHeight : DEFAULT_HEIGHT;
 	}
 	
 	@Override

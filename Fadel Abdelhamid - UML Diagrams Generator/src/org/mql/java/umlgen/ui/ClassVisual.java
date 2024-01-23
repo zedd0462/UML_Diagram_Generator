@@ -12,11 +12,11 @@ public class ClassVisual extends EntityVisual{
 		this.classModel = classModel;
 		init();
 	}
-
-
+	
 	@Override
 	protected void initName() {
-		this.entityName = StringUtils.getClassShortName(classModel.getName());
+		this.entityName = classModel.isAbstract() ? "<<abstract>> " : "";
+		this.entityName += StringUtils.getClassShortName(classModel.getName());
 	}
 	
 	@Override
@@ -39,6 +39,10 @@ public class ClassVisual extends EntityVisual{
 	@Override
 	protected boolean hasMethods() {
 		return true;
+	}
+	
+	 public ClassModel getClassModel() {
+		return classModel;
 	}
 
 
