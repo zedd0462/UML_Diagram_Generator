@@ -141,11 +141,11 @@ public class ProjectContext {
 		return classesInhertianceLevel;
 	}
 	
-	public int getClassInhertianceLevel(String classname) {
+	public int getClassInheritanceLevel(String classname) {
 		return classesInhertianceLevel.get(classname);
 	}
 	
-	public int getClassInhertianceLevel(ClassModel clazz) {
+	public int getClassInheritanceLevel(ClassModel clazz) {
 		return classesInhertianceLevel.get(clazz.getName());
 	}
 	

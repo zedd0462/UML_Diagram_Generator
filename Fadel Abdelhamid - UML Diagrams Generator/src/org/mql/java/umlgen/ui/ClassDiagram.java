@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import org.mql.java.umlgen.models.ClassModel;
 import org.mql.java.umlgen.models.ProjectContext;
 import org.mql.java.umlgen.models.ProjectModel;
+import org.mql.java.umlgen.utils.UIUtils;
 
 public class ClassDiagram extends JPanel{
 
@@ -28,13 +29,15 @@ public class ClassDiagram extends JPanel{
 	private static final int DEFAULT_WIDTH = 800;
 	private static final int MARGIN = 50;
 	private static final int SPACER_X = 50;
-	private static final int SPACER_Y = 50;
+	private static final int SPACER_Y = 200;
+	private int extraSpacer;
 	private int height;
 	private int width;
 	private int currentPrintingX;
 	private int currentPrintingY;
 	
 	private int lines;
+	private int currentLevel;
 	
 	private ProjectModel project;
 	private ProjectContext projectContext;
@@ -42,10 +45,12 @@ public class ClassDiagram extends JPanel{
 	private Collection<ClassModel> projectClasses;
 	private List<List<ClassVisual>> classes;
 	private Map<Integer, Integer> linesHeight;
+	private Map<String, int[]> entitiesCoordinates;
 
 	public ClassDiagram(ProjectModel projectModel) {
 		project = projectModel;
 		projectContext = project.getProjectContext();
+		currentLevel = 0;
 		initLists();
 		height = MARGIN * 2;
 		width = MARGIN * 2;
@@ -61,6 +66,7 @@ public class ClassDiagram extends JPanel{
 		classes = new Vector<List<ClassVisual>>();
 		projectClasses = projectContext.getLoadedClasses().values();
 		linesHeight = new Hashtable<Integer, Integer>();
+		entitiesCoordinates = new Hashtable<String, int[]>();
 		lines = max(projectContext.getClassesInhertianceLevel().values());
 		for(int i = 0; i <= lines; i++) {
 			classes.add(new Vector<ClassVisual>());
@@ -71,7 +77,7 @@ public class ClassDiagram extends JPanel{
 	private void fillEntites() {
 		for (ClassModel classModel : projectClasses) {
 			ClassVisual v = new ClassVisual(classModel);
-			int inhertianceLevel = projectContext.getClassInhertianceLevel(classModel);
+			int inhertianceLevel = projectContext.getClassInheritanceLevel(classModel);
 			classes.get(inhertianceLevel).add(v);
 			linesHeight.put(inhertianceLevel, max(v.getPreferredSize().height, linesHeight.get(inhertianceLevel)));
 			width += v.getPreferredSize().width + SPACER_X;
@@ -96,18 +102,33 @@ public class ClassDiagram extends JPanel{
 	}
 	
 	private void paintLines(Graphics g, List<List<ClassVisual>> lists) {
-		int currentLevel = 0;
+		currentLevel = 0;
 		for (List<ClassVisual> list : lists) {
 			paintLine(g, list);
 			currentPrintingY += SPACER_Y + linesHeight.get(currentLevel);
 			currentPrintingX = MARGIN;
+			currentLevel++;
 		}
 	}
 	
 	private void paintLine(Graphics g, List<ClassVisual> elements) {
+		extraSpacer = 0;
 		for (ClassVisual v : elements) {
+			ClassModel clazz = v.getClassModel();
 			Graphics translatedGraphics = g.create(currentPrintingX, currentPrintingY, width, height);
+			int[] currentClassCoordiantes = new int[]{currentPrintingX, currentPrintingY, v.getPreferredSize().width, v.getPreferredSize().height};
+			entitiesCoordinates.put(clazz.getName(), currentClassCoordiantes);
 			v.paintComponent(translatedGraphics);
+			if(currentLevel > 0) {
+				String superclassName = clazz.getSuperClassName();
+				int[] superClassCoordiantes = entitiesCoordinates.get(superclassName);
+				int x1 = currentClassCoordiantes[0] + (currentClassCoordiantes[2] / 2);
+				int y1 = currentClassCoordiantes[1];
+				int x2 = superClassCoordiantes[0] + (superClassCoordiantes[2] / 2);
+				int y2 = superClassCoordiantes[1] + superClassCoordiantes[3];
+				UIUtils.drawHorizontallyBrokenArrow(g, x1, y1, x2, y2, ((SPACER_Y / 3) + extraSpacer));
+				extraSpacer += 5;
+			}
 			currentPrintingX += v.getPreferredSize().width + SPACER_X;
 		}
 	}
@@ -120,6 +141,7 @@ public class ClassDiagram extends JPanel{
 	public JScrollPane asScrollPane(int width, int height) {
 		JScrollPane scrollPane =  new JScrollPane(this);
 		scrollPane.setPreferredSize(new Dimension(width, height));
+		UIUtils.fixScrolling(scrollPane);
 		return scrollPane;
 	}
 	

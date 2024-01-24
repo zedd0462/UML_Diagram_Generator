@@ -154,6 +154,15 @@ public class ClassModel implements Model, Entity{
 		return Modifier.isAbstract(modifiers);
 	}
 	
+	public String getSuperClassName() {
+		for (RelationModel relationModel : relations) {
+			if(relationModel.getRelationType() == RelationModel.INHERITANCE) {
+				return relationModel.getTargetClassString();
+			}
+		}
+		return null;
+	}
+	
 	@Override
 	public XMLElement getElementModel(XMLElementGenerator generator) {
 		return generator.generate(this);

@@ -1,6 +1,7 @@
 package org.mql.java.umlgen.examples;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -21,6 +22,7 @@ import org.mql.java.umlgen.models.ProjectModel;
 import org.mql.java.umlgen.ui.ClassDiagram;
 import org.mql.java.umlgen.ui.ClassVisual;
 import org.mql.java.umlgen.ui.InterfaceVisual;
+import org.mql.java.umlgen.utils.UIUtils;
 import org.mql.java.umlgen.xml.generators.CustomGenerator;
 import org.mql.java.umlgen.xml.generators.DOMGenerator;
 import org.mql.java.umlgen.xml.generators.XMLElement;
@@ -186,6 +188,33 @@ public class Examples {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void exp12() {
+		JFrame frame = new JFrame("UITEST");
+		class Arrow extends JPanel{
+			public Arrow() {
+				this.setPreferredSize(new Dimension(800, 600));
+			}
+			@Override
+			protected void paintComponent(Graphics g) {
+				UIUtils.drawArrow(g, 200, 200, 0, 0);
+				UIUtils.drawArrow(g, 200, 200, 400, 400);
+				UIUtils.drawArrow(g, 200, 200, 0, 400);
+				UIUtils.drawArrow(g, 200, 200, 400, 0);
+				UIUtils.drawArrow(g, 200, 200, 400/2, 400);
+				UIUtils.drawArrow(g, 200, 200, 400, 400/2);
+				UIUtils.drawArrow(g, 200, 200, 400/2, 0);
+				UIUtils.drawArrow(g, 200, 200, 0, 400/2);
+			}
+		}
+		Arrow panel = new Arrow();
+		panel.setPreferredSize(new Dimension(800, 600));
+		frame.setContentPane(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800, 600);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	public static void main(String[] args) {
