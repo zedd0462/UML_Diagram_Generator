@@ -193,6 +193,7 @@ public class Examples {
 	public void exp12() {
 		JFrame frame = new JFrame("UITEST");
 		class Arrow extends JPanel{
+			private static final long serialVersionUID = 1L;
 			public Arrow() {
 				this.setPreferredSize(new Dimension(800, 600));
 			}

@@ -149,5 +149,17 @@ public class ProjectContext {
 		return classesInhertianceLevel.get(clazz.getName());
 	}
 	
+	public int getEntitesCount() {
+		int count = 0;
+		count += loadedClasses.size();
+		count += loadedInterfaces.size();
+		count += loadedAnnotations.size();
+		return count;
+	}
+	
+	public int getPackagesCount() {
+		return loadedPackages.size();
+	}
+	
 
 }

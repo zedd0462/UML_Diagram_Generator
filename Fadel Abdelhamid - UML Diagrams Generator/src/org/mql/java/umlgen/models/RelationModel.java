@@ -61,7 +61,6 @@ public class RelationModel implements Model {
 		return target;
 	}
 	
-	//if things stopped working check here TODO
 	@SimpleElement(value="type", order=3)
 	public int getRelationType() {
 		return relationType;
