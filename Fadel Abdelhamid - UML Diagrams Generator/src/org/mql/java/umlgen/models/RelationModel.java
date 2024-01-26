@@ -25,7 +25,7 @@ public class RelationModel implements Model {
 	public RelationModel(Entity source, Entity target) {
 		this.source = source.getName();
 		this.target = target.getName();
-		this.relationType = 0; //If not specified it is an association
+		this.relationType = ASSOCIATION; //If not specified it is an association
 	}
 	
 	public RelationModel(Entity source, Entity target, int relationType) {
@@ -61,11 +61,8 @@ public class RelationModel implements Model {
 		return target;
 	}
 	
+	//if things stopped working check here TODO
 	@SimpleElement(value="type", order=3)
-	public int getRelationTypeString() {
-		return relationType;
-	}
-	
 	public int getRelationType() {
 		return relationType;
 	}

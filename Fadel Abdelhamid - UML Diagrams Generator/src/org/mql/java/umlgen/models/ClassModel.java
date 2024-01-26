@@ -104,7 +104,7 @@ public class ClassModel implements Model, Entity{
 		Class<?> superclass = reflectClass.getSuperclass();
 		if((!reflectClass.equals(Object.class)) && projectContext.isLoaded(superclass.getName())) {
 			ClassModel superclassModel = projectContext.getLoadedClassModel(superclass.getName());
-			RelationModel newRelation = new RelationModel(this, superclassModel, 3);
+			RelationModel newRelation = new RelationModel(this, superclassModel, RelationModel.INHERITANCE);
 			relations.add(newRelation);
 			projectContext.addRelation(newRelation);
 		}
@@ -113,7 +113,7 @@ public class ClassModel implements Model, Entity{
 		Class<?>[] implementedInterfaces = reflectClass.getInterfaces();
 		for (Class<?> interf : implementedInterfaces) {
 			if(projectContext.isLoaded(interf.getName())) {
-				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedInterfaceModel(interf.getName()), 4);
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedInterfaceModel(interf.getName()), RelationModel.REALIZATION);
 				relations.add(newRelation);
 				projectContext.addRelation(newRelation);
 			}
@@ -124,7 +124,7 @@ public class ClassModel implements Model, Entity{
 			Class<?> fieldType = f.getType();
 			//TODO: add support for collections.
 			if(projectContext.isLoaded(fieldType.getName())) {
-				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(fieldType.getName()));
+				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(fieldType.getName()), RelationModel.ASSOCIATION);
 				relations.add(newRelation);
 				projectContext.addRelation(newRelation);
 			} else {
