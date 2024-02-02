@@ -1,9 +1,7 @@
 package org.mql.java.umlgen.ui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;

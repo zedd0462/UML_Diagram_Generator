@@ -1,18 +1,22 @@
 package org.mql.java.umlgen.ui;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 public class MainFrame extends JFrame{
+	
+	private ImageIcon icon = new ImageIcon("resources/icons/‭icon.png");
 
 	private static final long serialVersionUID = 1L;
 
 	public MainFrame() {
 		super("UML Diagram Generator - Home");
-		this.setContentPane(new HomePanel());
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.pack();
-		this.setVisible(true);
+		setIconImage(icon.getImage());
+		setContentPane(new HomePanel());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pack();
+		setVisible(true);
 	}
 	
 	public static void main(String[] args) {

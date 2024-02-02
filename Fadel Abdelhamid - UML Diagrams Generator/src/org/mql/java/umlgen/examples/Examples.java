@@ -176,7 +176,7 @@ public class Examples {
 	}
 	public void exp11() {
 		try {
-			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p04-XML Parsers/bin");
+			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p02-Generics/bin");
 			ClassDiagram classDiag = new ClassDiagram(project);
 			JScrollPane scrollpane = classDiag.asScrollPane(800, 600);
 			JFrame frame = new JFrame("UITEST");
@@ -207,6 +207,34 @@ public class Examples {
 				UIUtils.drawArrow(g, 200, 200, 400, 400/2);
 				UIUtils.drawArrow(g, 200, 200, 400/2, 0);
 				UIUtils.drawArrow(g, 200, 200, 0, 400/2);
+			}
+		}
+		Arrow panel = new Arrow();
+		panel.setPreferredSize(new Dimension(800, 600));
+		frame.setContentPane(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800, 600);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public static void exp13() {
+		JFrame frame = new JFrame("UITEST");
+		class Arrow extends JPanel{
+			private static final long serialVersionUID = 1L;
+			public Arrow() {
+				this.setPreferredSize(new Dimension(800, 600));
+			}
+			@Override
+			protected void paintComponent(Graphics g) {
+				UIUtils.drawDashedArrow(g, 200, 200, 0, 0);
+				UIUtils.drawDashedArrow(g, 200, 200, 400, 400);
+				UIUtils.drawDashedArrow(g, 200, 200, 0, 400);
+				UIUtils.drawDashedArrow(g, 200, 200, 400, 0);
+				UIUtils.drawDashedArrow(g, 200, 200, 400/2, 400);
+				UIUtils.drawDashedArrow(g, 200, 200, 400, 400/2);
+				UIUtils.drawDashedArrow(g, 200, 200, 400/2, 0);
+				UIUtils.drawDashedArrow(g, 200, 200, 0, 400/2);
 			}
 		}
 		Arrow panel = new Arrow();

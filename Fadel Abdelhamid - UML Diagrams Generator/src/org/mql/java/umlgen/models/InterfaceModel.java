@@ -15,7 +15,7 @@ public class InterfaceModel implements Entity {
 	private ProjectContext projectContext;
 	private String name;
 	private int modifiers;
-	private Class<?> superclass;
+	private Class<?>[] superclasses;
 	private List<MethodModel> methods;
 	private List<FieldModel> fields;
 	private List<RelationModel> relations;
@@ -26,12 +26,8 @@ public class InterfaceModel implements Entity {
 		initLists();
 		this.name = interf.getName();
 		this.modifiers = interf.getModifiers();
-		Class<?>[] tmp = interf.getInterfaces();
-		if(tmp.length > 0) {
-			this.superclass = tmp[0];
-		}else {
-			this.superclass = null;
-		}
+		this.superclasses = interf.getInterfaces();
+		
 		for (Field f : interf.getDeclaredFields()) {
 			fields.add(new FieldModel(f));
 		}
@@ -88,11 +84,25 @@ public class InterfaceModel implements Entity {
 	}
 
 	public void resolveRelations() {
-		if(superclass != null && projectContext.isLoaded(superclass.getName())) {
-			RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(superclass.getName()), 3);
-			relations.add(newRelation);
-			projectContext.addRelation(newRelation);
+		if(superclasses != null && superclasses.length > 0) {
+			for (Class<?> superclass : superclasses) {
+				if(projectContext.isLoaded(superclass.getName())) {
+					RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(superclass.getName()), RelationModel.INHERITANCE);
+					relations.add(newRelation);
+					projectContext.addRelation(newRelation);
+				}
+			}
 		}
+	}
+	
+	public List<String> getSuperClassesNames() {
+		Vector<String> superclassesnames = new Vector<String>();
+		for (RelationModel relationModel : relations) {
+			if(relationModel.getRelationType() == RelationModel.INHERITANCE) {
+				superclassesnames.add(relationModel.getTargetClassString());
+			}
+		}
+		return superclassesnames;
 	}
 
 	@Override

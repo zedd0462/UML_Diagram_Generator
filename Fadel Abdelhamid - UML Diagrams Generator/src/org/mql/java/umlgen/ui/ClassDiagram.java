@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.mql.java.umlgen.models.ClassModel;
+import org.mql.java.umlgen.models.InterfaceModel;
 import org.mql.java.umlgen.models.ProjectContext;
 import org.mql.java.umlgen.models.ProjectModel;
 import org.mql.java.umlgen.utils.UIUtils;
@@ -36,82 +37,141 @@ public class ClassDiagram extends JPanel{
 	private int currentPrintingX;
 	private int currentPrintingY;
 	
-	private int lines;
-	private int currentLevel;
+	private int classRows;
+	private int currentClassLevel;
 	
 	private ProjectModel project;
 	private ProjectContext projectContext;
 	
+	private int classSectionStartingX;
+	private int classSectionStartingY;
+	
+	private int interfaceSectionStartingX;
+	private int interfaceSectionStartingY;
+	private int interfaceSectionWidth;
+	private int interfaceSectionHeight;
+	
+	//private int tmpX, tmpY;
+	
 	private Collection<ClassModel> projectClasses;
+	private Collection<InterfaceModel> projectInterfaces;
 	private List<List<ClassVisual>> classes;
-	private Map<Integer, Integer> linesHeight;
+	private List<InterfaceVisual> interfaces;
+	private Map<Integer, Integer> classRowsHeight;
+	private Map<Integer, Integer> classRowsWidth;
 	private Map<String, int[]> entitiesCoordinates;
 
 	public ClassDiagram(ProjectModel projectModel) {
 		project = projectModel;
 		projectContext = project.getProjectContext();
-		currentLevel = 0;
-		initLists();
+		interfaceSectionWidth = 0;
+		interfaceSectionHeight = 0;
+		interfaceSectionStartingX = MARGIN;
+		interfaceSectionStartingY = MARGIN;
+		currentClassLevel = 0;
 		height = MARGIN * 2;
 		width = MARGIN * 2;
+		initLists();
 		fillEntites();
 		initHeight();
+		initWidth();
+		//tmpX = interfaceSectionStartingX + interfaceSectionWidth;
+		//tmpY = interfaceSectionStartingY + interfaceSectionHeight;
 		if(width < DEFAULT_WIDTH) width = DEFAULT_WIDTH;
 		if(height < DEFAULT_HEIGHT) height = DEFAULT_HEIGHT;
-		currentPrintingX = MARGIN;
-		currentPrintingY = MARGIN;
+		
+		classSectionStartingX = MARGIN;
+		classSectionStartingY = interfaceSectionStartingY + interfaceSectionHeight();
 	}
 	
 	private void initLists() {
 		classes = new Vector<List<ClassVisual>>();
+		interfaces = new Vector<InterfaceVisual>();
 		projectClasses = projectContext.getLoadedClasses().values();
-		linesHeight = new Hashtable<Integer, Integer>();
+		projectInterfaces = projectContext.getLoadedInterfaces().values();
+		classRowsHeight = new Hashtable<Integer, Integer>();
+		classRowsWidth = new Hashtable<Integer, Integer>();
 		entitiesCoordinates = new Hashtable<String, int[]>();
-		lines = max(projectContext.getClassesInhertianceLevel().values());
-		for(int i = 0; i <= lines; i++) {
+		classRows = max(projectContext.getClassesInhertianceLevel().values());
+		for(int i = 0; i <= classRows; i++) {
 			classes.add(new Vector<ClassVisual>());
-			linesHeight.put(i, 0);
+			classRowsHeight.put(i, 0);
+			classRowsWidth.put(i, 0);
 		}
 	}
 	
 	private void fillEntites() {
 		for (ClassModel classModel : projectClasses) {
 			ClassVisual v = new ClassVisual(classModel);
-			int inhertianceLevel = projectContext.getClassInheritanceLevel(classModel);
-			classes.get(inhertianceLevel).add(v);
-			linesHeight.put(inhertianceLevel, max(v.getPreferredSize().height, linesHeight.get(inhertianceLevel)));
-			width += v.getPreferredSize().width + SPACER_X;
+			int inheritanceLevel = projectContext.getClassInheritanceLevel(classModel);
+			int addedWidth = v.getPreferredSize().width + SPACER_X;
+			classes.get(inheritanceLevel).add(v);
+			classRowsHeight.put(inheritanceLevel, max(v.getPreferredSize().height, classRowsHeight.get(inheritanceLevel)));
+			classRowsWidth.put(inheritanceLevel, classRowsWidth.get(inheritanceLevel) + addedWidth);
+		}
+		for (InterfaceModel interfaceModel : projectInterfaces) {
+			InterfaceVisual v = new InterfaceVisual(interfaceModel);
+			int entityHeight = v.getPreferredSize().height;
+			int addedWidth = v.getPreferredSize().width + SPACER_X;
+			interfaces.add(v);
+			interfaceSectionHeight = max(interfaceSectionHeight, entityHeight);
+			interfaceSectionWidth += addedWidth;
 		}
 	}
 	
 	private void initHeight() {
-		int linesCount = linesHeight.size();
-		int verticalSpacesHeight = SPACER_Y * (linesCount - 1);
-		int classesHeight = sum(linesHeight.values());
-		this.height += verticalSpacesHeight + classesHeight;
+		this.height += interfaceSectionHeight() + SPACER_Y + classSectionHeight();
+	}
+	
+	private void initWidth() {
+		this.width += max(classSectionWidth(), interfaceSectionWidth());
+	}
+	
+	private int classSectionWidth() {
+		return max(classRowsWidth.values());
+	}
+	
+	private int classSectionHeight() {
+		int classRowsCount = classRowsHeight.size();
+		int verticalSpacesHeight = SPACER_Y * (classRowsCount - 1);
+		int classesHeight = sum(classRowsHeight.values());
+		return verticalSpacesHeight + classesHeight;
+	}
+	
+	private int interfaceSectionWidth() {
+		return interfaceSectionWidth;
+	}
+	
+	private int interfaceSectionHeight() {
+		return interfaceSectionHeight > 0 ? interfaceSectionHeight + SPACER_Y : 0 ;
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
+		//g.setColor(Color.BLACK);
+		//g.fillRect(tmpX, tmpY, 50, 50);
 		currentPrintingX = MARGIN;
 		currentPrintingY = MARGIN;
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, width, height);
 		g.setColor(Color.BLACK);
-		paintLines(g, classes);
+		paintInterfaces(g, interfaces);
+		paintClassRows(g, classes);
 	}
 	
-	private void paintLines(Graphics g, List<List<ClassVisual>> lists) {
-		currentLevel = 0;
+	private void paintClassRows(Graphics g, List<List<ClassVisual>> lists) {
+		currentClassLevel = 0;
+		currentPrintingX = classSectionStartingX;
+		currentPrintingY = classSectionStartingY;
 		for (List<ClassVisual> list : lists) {
-			paintLine(g, list);
-			currentPrintingY += SPACER_Y + linesHeight.get(currentLevel);
-			currentPrintingX = MARGIN;
-			currentLevel++;
+			paintClassRow(g, list);
+			currentPrintingY += SPACER_Y + classRowsHeight.get(currentClassLevel);
+			currentPrintingX = classSectionStartingX;
+			currentClassLevel++;
 		}
 	}
 	
-	private void paintLine(Graphics g, List<ClassVisual> elements) {
+	private void paintClassRow(Graphics g, List<ClassVisual> elements) {
 		extraSpacer = 0;
 		for (ClassVisual v : elements) {
 			ClassModel clazz = v.getClassModel();
@@ -119,8 +179,9 @@ public class ClassDiagram extends JPanel{
 			int[] currentClassCoordiantes = new int[]{currentPrintingX, currentPrintingY, v.getPreferredSize().width, v.getPreferredSize().height};
 			entitiesCoordinates.put(clazz.getName(), currentClassCoordiantes);
 			v.paintComponent(translatedGraphics);
-			if(currentLevel > 0) {
+			if(currentClassLevel > 0) {
 				String superclassName = clazz.getSuperClassName();
+				v.incNorth();
 				int[] superClassCoordiantes = entitiesCoordinates.get(superclassName);
 				int x1 = currentClassCoordiantes[0] + (currentClassCoordiantes[2] / 2);
 				int y1 = currentClassCoordiantes[1];
@@ -132,6 +193,23 @@ public class ClassDiagram extends JPanel{
 			currentPrintingX += v.getPreferredSize().width + SPACER_X;
 		}
 	}
+	
+	private void paintInterfaces(Graphics g, List<InterfaceVisual> elements) {
+		extraSpacer = 0;
+		currentPrintingX = interfaceSectionStartingX;
+		currentPrintingY = interfaceSectionStartingY;
+		for (InterfaceVisual v : elements) {
+			InterfaceModel interf = v.getInterfaceModel();
+			Graphics translatedGraphics = g.create(currentPrintingX, currentPrintingY, width, height);
+			int[] currentClassCoordiantes = new int[]{currentPrintingX, currentPrintingY, v.getPreferredSize().width, v.getPreferredSize().height};
+			entitiesCoordinates.put(interf.getName(), currentClassCoordiantes);
+			v.paintComponent(translatedGraphics);
+			//TODO: draw inhertiance
+			currentPrintingX += v.getPreferredSize().width + SPACER_X;
+		}
+	}
+	
+	
 	
 	@Override
 	public Dimension getPreferredSize() {

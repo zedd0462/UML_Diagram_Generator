@@ -14,7 +14,7 @@ public class HomePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private static final int DEFAULT_HEIGHT = 350;
-	private static final int DEFAULT_WIDTH = 600;
+	private static final int DEFAULT_WIDTH = 650;
 	
 	private int width;
 	private int height;
@@ -23,7 +23,7 @@ public class HomePanel extends JPanel{
 	
 	private ProjectModel project;
 	private ProjectChooser chooser;
-	private ProjectInfo info;
+	private ProjectPanel info;
 	
 	private GridLayout layout;
 	
@@ -33,7 +33,7 @@ public class HomePanel extends JPanel{
 		this.height = height;
 		layout = new GridLayout(1,2);
 		chooser = new ProjectChooser(loadListener);
-		info = new ProjectInfo();
+		info = new ProjectPanel();
 		setLayout(layout);
 		add(chooser);
 		add(info);

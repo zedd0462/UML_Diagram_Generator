@@ -41,6 +41,12 @@ public abstract class EntityVisual extends JPanel{
 	protected int currentPrintingY;
 	protected int totalElementCount;
 	
+	protected int countRelationsNorth;
+	protected int countRelationsEast;
+	protected int countRelationsSouth;
+	protected int countRelationsWest;
+	
+	
 	protected Font font;
 	protected FontMetrics fontmetrics;
 	
@@ -70,6 +76,7 @@ public abstract class EntityVisual extends JPanel{
 		width = entityNameWidth > DEFAULT_WIDTH ? entityNameWidth : DEFAULT_WIDTH;
 		initStrings();
 		initHeight();
+		initCounts();
 	}
 	
 	@Override
@@ -189,5 +196,63 @@ public abstract class EntityVisual extends JPanel{
 	public Dimension getPreferredSize() {
 		return new Dimension(width, height);
 	}
+	
+	public void initCounts() {
+		countRelationsNorth = 0;
+		countRelationsEast = 0;
+		countRelationsSouth = 0;
+		countRelationsWest = 0;
+	}
+
+	public int getNorth() {
+		return countRelationsNorth;
+	}
+
+	public void setNorth(int countRelationsNorth) {
+		this.countRelationsNorth = countRelationsNorth;
+	}
+
+	public int getEast() {
+		return countRelationsEast;
+	}
+
+	public void setEast(int countRelationsEast) {
+		this.countRelationsEast = countRelationsEast;
+	}
+
+	public int getSouth() {
+		return countRelationsSouth;
+	}
+
+	public void setSouth(int countRelationsSouth) {
+		this.countRelationsSouth = countRelationsSouth;
+	}
+
+	public int getWest() {
+		return countRelationsWest;
+	}
+
+	public void setWest(int countRelationsWest) {
+		this.countRelationsWest = countRelationsWest;
+	}
+
+	public void incNorth() {
+		countRelationsNorth++;
+	}
+
+	public void incEast() {
+		countRelationsEast++;
+	}
+
+	public void incSouth() {
+		countRelationsSouth++;
+	}
+
+	public void incWest() {
+		countRelationsWest++;
+	}
+	
+	
+	
 
 }

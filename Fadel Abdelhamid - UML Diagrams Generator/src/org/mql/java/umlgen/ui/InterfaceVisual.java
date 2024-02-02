@@ -39,5 +39,9 @@ public class InterfaceVisual extends EntityVisual{
 	protected boolean hasMethods() {
 		return true;
 	}
+	
+	public InterfaceModel getInterfaceModel() {
+		return interfaceModel;
+	}
 
 }

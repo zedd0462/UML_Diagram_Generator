@@ -161,5 +161,16 @@ public class ProjectContext {
 		return loadedPackages.size();
 	}
 	
+	public List<InterfaceModel> getImplementedInterfaces(ClassModel clazz){
+		List<InterfaceModel> implementedInterfaces = new Vector<InterfaceModel>();
+		for (RelationModel relation : clazz.getRelations()) {
+			if(relation.getRelationType() == RelationModel.REALIZATION) {
+				InterfaceModel interf = getLoadedInterfaceModel(relation.getTargetClassString());
+				implementedInterfaces.add(interf);
+			}
+		}
+		return implementedInterfaces;
+	}
+	
 
 }

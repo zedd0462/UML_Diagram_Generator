@@ -9,10 +9,8 @@ public class MathUtils {
 	
 	public static int sum(Collection<Integer> list) {
 	     int sum = 0; 
-
 	     for (int i : list)
 	         sum = sum + i;
-
 	     return sum;
 	}
 	
