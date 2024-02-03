@@ -30,10 +30,12 @@ public class SaveListener implements ActionListener{
 			int res = chooser.showSaveDialog(null);
 			if (res == JFileChooser.APPROVE_OPTION) {
 				savePath = chooser.getSelectedFile().getAbsolutePath();
+				DOMGenerator generator = new DOMGenerator(project.getElementModel(new CustomGenerator()), "uml-diagram");
+				generator.dump(savePath);
+				new InfoDialog("File saved successfully !");
+			} else if (res == JFileChooser.CANCEL_OPTION) {
+				new InfoDialog("Operation cancelled.");
 			}
-			DOMGenerator generator = new DOMGenerator(project.getElementModel(new CustomGenerator()), "uml-diagram");
-			generator.dump(savePath);
-			new InfoDialog("File saved successfully !");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			new ErrorDialog(ex.getMessage());
