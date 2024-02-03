@@ -9,10 +9,6 @@ import org.mql.java.umlgen.annotations.ComplexElement;
 import org.mql.java.umlgen.annotations.SimpleElement;
 import org.mql.java.umlgen.models.Model;
 
-/**
- * A Producer class to produce XMLElement from an 
- * UMLModelEntity using custom XML syntax.
- */
 public class CustomGenerator implements XMLElementGenerator {
 
 	public CustomGenerator() {

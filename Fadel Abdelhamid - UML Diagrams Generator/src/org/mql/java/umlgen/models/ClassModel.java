@@ -16,7 +16,6 @@ import org.mql.java.umlgen.xml.generators.XMLElementGenerator;
 public class ClassModel implements Model, Entity{
 	
 	
-	//TODO: not complete
 	private ProjectContext projectContext;
 	private String name;
 	private int modifiers;

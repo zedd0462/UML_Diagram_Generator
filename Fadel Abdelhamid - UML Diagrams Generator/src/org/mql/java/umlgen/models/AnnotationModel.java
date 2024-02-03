@@ -30,8 +30,6 @@ public class AnnotationModel implements Entity{
 		relations = new Vector<RelationModel>();
 	}
 	
-	
-	
 	public AnnotationModel(ProjectContext projectContext, String name, int modifiers, List<MethodModel> methods, List<RelationModel> relations) {
 		super();
 		this.projectContext = projectContext;
@@ -61,7 +59,7 @@ public class AnnotationModel implements Entity{
 	}
 
 	public void resolveRelations() {
-		//TODO implement relations in annotations
+		//TODO
 		
 	}
 

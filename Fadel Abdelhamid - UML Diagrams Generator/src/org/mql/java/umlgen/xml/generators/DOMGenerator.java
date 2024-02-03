@@ -15,10 +15,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
-/**
- * Defines the generator that creates a DOM document from
- * {@code XMLElement}.
- */
 public class DOMGenerator {
 	Document document;
 	
@@ -61,10 +57,6 @@ public class DOMGenerator {
         }
     }
 	
-	/**
-	 * Saves the generated dom document in the specified file.
-	 * @param filepath Path for the saved file
-	 */
 	public void dump(String filepath) {
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();

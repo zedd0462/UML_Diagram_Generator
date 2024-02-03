@@ -2,10 +2,6 @@ package org.mql.java.umlgen.xml.parsers;
 
 import org.mql.java.umlgen.models.*;
 
-/**
- * Provides the method parse that takes path to xml files and generates
- * corresponding models.
- */
 public class ModelsParser {
 	
 	private ProjectContext projectContext;
