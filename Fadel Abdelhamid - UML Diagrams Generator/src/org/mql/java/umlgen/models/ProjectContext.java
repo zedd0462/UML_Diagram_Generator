@@ -119,9 +119,9 @@ public class ProjectContext {
 		if (!classesInhertianceLevel.containsKey(classname)) {
 			classesInhertianceLevel.put(classname, 0);
 			for (RelationModel relationModel : clazz.getRelations()) {
-				if(	relationModel.getSourceClassString().equals(classname) &&
+				if(	relationModel.getSourceClassName().equals(classname) &&
 					relationModel.getRelationType() == RelationModel.INHERITANCE) {
-					String superclassName = relationModel.getTargetClassString();
+					String superclassName = relationModel.getTargetClassName();
 					ClassModel superclass = getLoadedClassModel(superclassName);
 					processClassInheritanceLevel(superclass);
 					int superclassInheritanceLevel = classesInhertianceLevel.get(superclassName);
@@ -165,11 +165,21 @@ public class ProjectContext {
 		List<InterfaceModel> implementedInterfaces = new Vector<InterfaceModel>();
 		for (RelationModel relation : clazz.getRelations()) {
 			if(relation.getRelationType() == RelationModel.REALIZATION) {
-				InterfaceModel interf = getLoadedInterfaceModel(relation.getTargetClassString());
+				InterfaceModel interf = getLoadedInterfaceModel(relation.getTargetClassName());
 				implementedInterfaces.add(interf);
 			}
 		}
 		return implementedInterfaces;
+	}
+	
+	public List<RelationModel> getAssociations(){
+		List<RelationModel> associations = new Vector<RelationModel>();
+		for (RelationModel r : relations) {
+			if(r.getRelationType() == RelationModel.ASSOCIATION) {
+				associations.add(r);
+			}
+		}
+		return associations;
 	}
 	
 

@@ -157,7 +157,7 @@ public class ClassModel implements Model, Entity{
 	public String getSuperClassName() {
 		for (RelationModel relationModel : relations) {
 			if(relationModel.getRelationType() == RelationModel.INHERITANCE) {
-				return relationModel.getTargetClassString();
+				return relationModel.getTargetClassName();
 			}
 		}
 		return null;

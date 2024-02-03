@@ -99,7 +99,7 @@ public class InterfaceModel implements Entity {
 		Vector<String> superclassesnames = new Vector<String>();
 		for (RelationModel relationModel : relations) {
 			if(relationModel.getRelationType() == RelationModel.INHERITANCE) {
-				superclassesnames.add(relationModel.getTargetClassString());
+				superclassesnames.add(relationModel.getTargetClassName());
 			}
 		}
 		return superclassesnames;

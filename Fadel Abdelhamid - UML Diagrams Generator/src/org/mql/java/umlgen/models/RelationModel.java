@@ -52,12 +52,12 @@ public class RelationModel implements Model {
 	}
 
 	@SimpleElement(value="source", order=1)
-	public String getSourceClassString() {
+	public String getSourceClassName() {
 		return source;
 	}
 
 	@SimpleElement(value="target", order=2)
-	public String getTargetClassString() {
+	public String getTargetClassName() {
 		return target;
 	}
 	
