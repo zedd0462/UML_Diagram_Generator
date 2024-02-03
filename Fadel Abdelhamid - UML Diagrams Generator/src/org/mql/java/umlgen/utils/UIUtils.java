@@ -88,6 +88,9 @@ public class UIUtils {
 
         double lineLength = Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
         int numDashes = (int) (lineLength / dashLength);
+        
+        //To avoid division by zero
+        numDashes = numDashes > 0 ? numDashes : 1;
 
         double xInc = (x2 - x1) / numDashes;
         double yInc = (y2 - y1) / numDashes;
@@ -154,6 +157,23 @@ public class UIUtils {
 	    g.drawLine(x2, y2, arrowX2, arrowY2);
 
 	    g.drawLine(arrowX1, arrowY1, arrowX2, arrowY2);
+	}
+	
+	public static void drawHorizontallyDashedBrokenLine(Graphics gr, int x1, int y1, int x2, int y2, int breakingDistance) {
+	    Graphics2D g = (Graphics2D) gr;
+	    g.setStroke(new BasicStroke(2));
+	    g.setColor(Color.BLACK);
+
+	    int breakY1 = y1 + (y2 > y1 ? breakingDistance : -breakingDistance);
+	    drawDashedLine(g, x1, y1, x1, breakY1);
+
+	    int breakX = x2;
+	    drawDashedLine(g, x1, breakY1, breakX, breakY1);
+	    
+	    int breakY2 = y2 + (y2 > y1 ? -breakingDistance : breakingDistance);
+	    drawDashedLine(g, breakX, breakY1, breakX, breakY2);
+
+	    drawDashedLine(g, breakX, breakY2, x2, y2);
 	}
 
 }

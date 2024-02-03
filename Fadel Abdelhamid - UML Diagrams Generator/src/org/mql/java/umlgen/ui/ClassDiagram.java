@@ -31,6 +31,7 @@ public class ClassDiagram extends JPanel{
 	private static final int MARGIN = 50;
 	private static final int SPACER_X = 50;
 	private static final int SPACER_Y = 200;
+	private static final int EXTRA_WIDTH = 50;
 	private int extraSpacer;
 	private int height;
 	private int width;
@@ -51,7 +52,7 @@ public class ClassDiagram extends JPanel{
 	private int interfaceSectionWidth;
 	private int interfaceSectionHeight;
 	
-	//private int tmpX, tmpY;
+	private int relationBreakPointX, relationBreakPointY;
 	
 	private Collection<ClassModel> projectClasses;
 	private Collection<InterfaceModel> projectInterfaces;
@@ -75,8 +76,8 @@ public class ClassDiagram extends JPanel{
 		fillEntites();
 		initHeight();
 		initWidth();
-		//tmpX = interfaceSectionStartingX + interfaceSectionWidth;
-		//tmpY = interfaceSectionStartingY + interfaceSectionHeight;
+		relationBreakPointX = width - SPACER_X - EXTRA_WIDTH;
+		relationBreakPointY = interfaceSectionStartingY + interfaceSectionHeight + (SPACER_Y / 2);
 		if(width < DEFAULT_WIDTH) width = DEFAULT_WIDTH;
 		if(height < DEFAULT_HEIGHT) height = DEFAULT_HEIGHT;
 		
@@ -125,6 +126,7 @@ public class ClassDiagram extends JPanel{
 	
 	private void initWidth() {
 		this.width += max(classSectionWidth(), interfaceSectionWidth());
+		this.width += EXTRA_WIDTH;
 	}
 	
 	private int classSectionWidth() {
@@ -148,8 +150,6 @@ public class ClassDiagram extends JPanel{
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		//g.setColor(Color.BLACK);
-		//g.fillRect(tmpX, tmpY, 50, 50);
 		currentPrintingX = MARGIN;
 		currentPrintingY = MARGIN;
 		g.setColor(Color.WHITE);
@@ -171,10 +171,15 @@ public class ClassDiagram extends JPanel{
 		}
 	}
 	
+	//TODO refactor this (its getting too long)
 	private void paintClassRow(Graphics g, List<ClassVisual> elements) {
 		extraSpacer = 0;
+		int breakX = relationBreakPointX;
+		int breakY = relationBreakPointY;
+		int interfaceRelationSpacer = 5;
 		for (ClassVisual v : elements) {
 			ClassModel clazz = v.getClassModel();
+			List<InterfaceModel> implementedInterfaces = projectContext.getImplementedInterfaces(clazz);
 			Graphics translatedGraphics = g.create(currentPrintingX, currentPrintingY, width, height);
 			int[] currentClassCoordiantes = new int[]{currentPrintingX, currentPrintingY, v.getPreferredSize().width, v.getPreferredSize().height};
 			entitiesCoordinates.put(clazz.getName(), currentClassCoordiantes);
@@ -189,6 +194,32 @@ public class ClassDiagram extends JPanel{
 				int y2 = superClassCoordiantes[1] + superClassCoordiantes[3];
 				UIUtils.drawHorizontallyBrokenArrow(g, x1, y1, x2, y2, ((SPACER_Y / 3) + extraSpacer));
 				extraSpacer += 5;
+			}
+			if(implementedInterfaces.size() > 0) {
+				for (InterfaceModel interfaceModel : implementedInterfaces) {
+					String interfaceName = interfaceModel.getName();
+					int[] interfaceCoordiantes = entitiesCoordinates.get(interfaceName);
+					int x1 = currentClassCoordiantes[0] + (currentClassCoordiantes[2] / 2) + interfaceRelationSpacer;
+					int y1 = currentClassCoordiantes[1];
+					int x2 = interfaceCoordiantes[0] + (interfaceCoordiantes[2] / 2);
+					int y2 = interfaceCoordiantes[1] + interfaceCoordiantes[3];
+					if(currentClassLevel == 0) {
+						UIUtils.drawHorizontallyDashedBrokenArrow(
+									g, x1, y1, x2, y2, ((SPACER_Y / 3) + extraSpacer)
+								);
+					}else {
+						UIUtils.drawHorizontallyDashedBrokenLine(
+									g, x1, y1, breakX, breakY, ((SPACER_Y / 3) + extraSpacer)
+								);
+						UIUtils.drawHorizontallyDashedBrokenArrow(
+									g, breakX, breakY, x2, y2, (10 + extraSpacer)
+								);
+						breakX += 5;
+						//breakY += 5;
+					}
+					interfaceRelationSpacer += 3;
+					extraSpacer += 5;
+				}
 			}
 			currentPrintingX += v.getPreferredSize().width + SPACER_X;
 		}

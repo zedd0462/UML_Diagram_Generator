@@ -176,7 +176,7 @@ public class Examples {
 	}
 	public void exp11() {
 		try {
-			ProjectModel project = new ProjectModel("C:/repos/Java_MQL/p02-Generics/bin");
+			ProjectModel project = new ProjectModel("C:/repos/java_problem_solving/p02-Generics/bin");
 			ClassDiagram classDiag = new ClassDiagram(project);
 			JScrollPane scrollpane = classDiag.asScrollPane(800, 600);
 			JFrame frame = new JFrame("UITEST");
