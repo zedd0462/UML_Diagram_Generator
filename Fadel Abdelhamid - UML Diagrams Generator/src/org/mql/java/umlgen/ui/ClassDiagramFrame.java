@@ -12,7 +12,7 @@ public class ClassDiagramFrame extends JFrame{
 
 	public ClassDiagramFrame(ProjectModel project) {
 		super("UML Diagram Generator - ClassDiagram");
-		classdiagram = new ClassDiagram(project);
+		classdiagram = new ClassDiagram(project, true);
 		this.setContentPane(classdiagram.asScrollPane(700, 500));
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.pack();

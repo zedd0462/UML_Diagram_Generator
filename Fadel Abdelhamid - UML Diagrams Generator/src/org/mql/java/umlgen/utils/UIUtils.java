@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Arrays;
 
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -35,7 +36,6 @@ public class UIUtils {
 		
 		Graphics2D g = (Graphics2D) gr;
 		g.setStroke(new BasicStroke(2));
-		g.setColor(Color.BLACK);
 		g.drawLine(x1, y1, x2, y2);
 	
         double angle = Math.atan2(y2 - y1, x2 - x1);
@@ -57,7 +57,6 @@ public class UIUtils {
 	public static void drawHorizontallyBrokenLine(Graphics gr, int x1, int y1, int x2, int y2, int breakingDistance) {
 	    Graphics2D g = (Graphics2D) gr;
 	    g.setStroke(new BasicStroke(2));
-	    g.setColor(Color.BLACK);
 
 	    int breakY1 = y1 + (y2 > y1 ? breakingDistance : -breakingDistance);
 	    g.drawLine(x1, y1, x1, breakY1);
@@ -74,7 +73,6 @@ public class UIUtils {
 	public static void drawHorizontallyBrokenArrow(Graphics gr, int x1, int y1, int x2, int y2, int breakingDistance) {
 	    Graphics2D g = (Graphics2D) gr;
 	    g.setStroke(new BasicStroke(2));
-	    g.setColor(Color.BLACK);
 
 	    int breakY1 = y1 + (y2 > y1 ? breakingDistance : -breakingDistance);
 	    g.drawLine(x1, y1, x1, breakY1);
@@ -149,7 +147,6 @@ public class UIUtils {
 	public static void drawHorizontallyDashedBrokenArrow(Graphics gr, int x1, int y1, int x2, int y2, int breakingDistance) {
 	    Graphics2D g = (Graphics2D) gr;
 	    g.setStroke(new BasicStroke(2));
-	    g.setColor(Color.BLACK);
 
 	    int breakY1 = y1 + (y2 > y1 ? breakingDistance : -breakingDistance);
 	    drawDashedLine(g, x1, y1, x1, breakY1);
@@ -179,7 +176,6 @@ public class UIUtils {
 	public static void drawHorizontallyDashedBrokenLine(Graphics gr, int x1, int y1, int x2, int y2, int breakingDistance) {
 	    Graphics2D g = (Graphics2D) gr;
 	    g.setStroke(new BasicStroke(2));
-	    g.setColor(Color.BLACK);
 
 	    int breakY1 = y1 + (y2 > y1 ? breakingDistance : -breakingDistance);
 	    drawDashedLine(g, x1, y1, x1, breakY1);
@@ -191,6 +187,25 @@ public class UIUtils {
 	    drawDashedLine(g, breakX, breakY1, breakX, breakY2);
 
 	    drawDashedLine(g, breakX, breakY2, x2, y2);
+	}
+	
+	public static Color getColor(int hashCode) {
+        int red = (hashCode & 0xFF0000) >> 16;
+        int green = (hashCode & 0x00FF00) >> 8;
+        int blue = hashCode & 0x0000FF;
+        //for colors to be dark
+        red = (int) (red * 0.7);
+        green = (int) (green * 0.7);
+        blue = (int) (blue * 0.7);
+        return new Color(red, green, blue);
+    }
+	
+	public static Color getColor(Object object) {
+		return getColor(object.hashCode());
+	}
+	
+	public static Color getColor(Object ...objects) {
+		return getColor(Arrays.hashCode(objects));
 	}
 
 }

@@ -39,6 +39,7 @@ public class ClassDiagram extends JPanel{
 	private int width;
 	private int currentPrintingX;
 	private int currentPrintingY;
+	private boolean isColored;
 	
 	private int classRows;
 	private int currentClassLevel;
@@ -67,10 +68,12 @@ public class ClassDiagram extends JPanel{
 	private Map<String, Integer> classLevel;
 	private Map<String, int[]> entitiesCoordinates;
 	private Map<String, Integer> entityAssociationCount;
+	private Map<String, Integer> entityInhertianceCount;
 	private Map<Integer, Point> classLevelCoordinates;
 
-	public ClassDiagram(ProjectModel projectModel) {
+	public ClassDiagram(ProjectModel projectModel, boolean isColored) {
 		project = projectModel;
+		this.isColored = isColored;
 		projectContext = project.getProjectContext();
 		interfaceSectionWidth = 0;
 		interfaceSectionHeight = 0;
@@ -90,6 +93,10 @@ public class ClassDiagram extends JPanel{
 		
 		classSectionStartingX = MARGIN * 2;
 		classSectionStartingY = interfaceSectionStartingY + interfaceSectionHeight();
+	}
+	
+	public ClassDiagram(ProjectModel project) {
+		this(project, false);
 	}
 	
 	private void initLists() {
@@ -158,6 +165,20 @@ public class ClassDiagram extends JPanel{
 		return interfaceSectionHeight > 0 ? interfaceSectionHeight + SPACER_Y : 0 ;
 	}
 	
+	private Color getColor(Object obj) {
+		if(isColored) {
+			return UIUtils.getColor(obj);
+		}
+		return Color.BLACK;
+	}
+	
+	private Color getColor(Object ...objs) {
+		if(isColored) {
+			return UIUtils.getColor(objs);
+		}
+		return Color.BLACK;
+	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		currentPrintingX = MARGIN;
@@ -187,6 +208,7 @@ public class ClassDiagram extends JPanel{
 	
 	//TODO refactor this (its getting too long)
 	private void paintClassRow(Graphics g, List<ClassVisual> elements) {
+		entityInhertianceCount = new Hashtable<String, Integer>();
 		extraSpacer = 0;
 		int breakX = relationBreakPointX;
 		int breakY = relationBreakPointY;
@@ -199,23 +221,31 @@ public class ClassDiagram extends JPanel{
 			entitiesCoordinates.put(clazz.getName(), currentClassCoordiantes);
 			v.paintComponent(translatedGraphics);
 			if(currentClassLevel > 0) {
+				g.setColor(getColor(clazz.getName(), clazz.getSuperClassName()));
 				String superclassName = clazz.getSuperClassName();
-				v.incNorth();
+				entityInhertianceCount.putIfAbsent(superclassName, 0);
+				int superclassInheritanceCount = entityInhertianceCount.get(superclassName);
+				entityInhertianceCount.put(superclassName, superclassInheritanceCount + 1);
 				int[] superClassCoordiantes = entitiesCoordinates.get(superclassName);
 				int x1 = currentClassCoordiantes[0] + (currentClassCoordiantes[2] / 2);
 				int y1 = currentClassCoordiantes[1];
-				int x2 = superClassCoordiantes[0] + (superClassCoordiantes[2] / 2);
+				int x2 = superClassCoordiantes[0] + (superClassCoordiantes[2] / 2)  + (superclassInheritanceCount * 3);
 				int y2 = superClassCoordiantes[1] + superClassCoordiantes[3];
 				UIUtils.drawHorizontallyBrokenArrow(g, x1, y1, x2, y2, ((SPACER_Y / 3) + extraSpacer));
 				extraSpacer += 5;
+				g.setColor(Color.BLACK);
 			}
 			if(implementedInterfaces.size() > 0) {
 				for (InterfaceModel interfaceModel : implementedInterfaces) {
 					String interfaceName = interfaceModel.getName();
+					entityInhertianceCount.putIfAbsent(interfaceName, 0);
+					int interfaceInheritanceCount = entityInhertianceCount.get(interfaceName);
+					entityInhertianceCount.put(interfaceName, interfaceInheritanceCount + 1);
+					g.setColor(getColor(interfaceName, clazz.getName()));
 					int[] interfaceCoordiantes = entitiesCoordinates.get(interfaceName);
 					int x1 = currentClassCoordiantes[0] + (currentClassCoordiantes[2] / 2) + interfaceRelationSpacer;
 					int y1 = currentClassCoordiantes[1];
-					int x2 = interfaceCoordiantes[0] + (interfaceCoordiantes[2] / 2);
+					int x2 = interfaceCoordiantes[0] + (interfaceCoordiantes[2] / 2) + (interfaceInheritanceCount * 3);
 					int y2 = interfaceCoordiantes[1] + interfaceCoordiantes[3];
 					if(currentClassLevel == 0) {
 						UIUtils.drawHorizontallyDashedBrokenArrow(
@@ -232,6 +262,7 @@ public class ClassDiagram extends JPanel{
 					}
 					interfaceRelationSpacer += 3;
 					extraSpacer += 5;
+					g.setColor(Color.BLACK);
 				}
 			}
 			currentPrintingX += v.getPreferredSize().width + SPACER_X;
@@ -266,6 +297,7 @@ public class ClassDiagram extends JPanel{
 			classLevelRelationCount.putIfAbsent(classLevel.getOrDefault(sourceClassName, -1), 0);
 			classLevelRelationCount.putIfAbsent(classLevel.getOrDefault(targetClassName, -1), 0);
 			if(!isAlreadyDrawn(r) && !sourceClassName.equals(targetClassName)) {
+				g.setColor(getColor(r));
 				int sourceAssocCount = entityAssociationCount.get(sourceClassName);
 				int targetAssocCount = entityAssociationCount.get(targetClassName);
 				entityAssociationCount.put(sourceClassName, sourceAssocCount + 1);
@@ -333,7 +365,6 @@ public class ClassDiagram extends JPanel{
 					g.drawLine(sourcePoints[1].x, sourcePoints[1].y, sourcePoints[2].x, sourcePoints[2].y);
 					g.drawLine(sourcePoints[2].x, sourcePoints[2].y, sourcePoints[3].x, sourcePoints[3].y);
 					
-					
 					Point[] targetPoints = new Point[4];
 					targetPoints[3] = new Point(targetBreakPoint.x - 50 - (3 * leftAssocCount), targetBreakPoint.y - 50 - (3 * leftAssocCount));
 					targetPoints[0] = new Point(targetCoordinates[0], targetCoordinates[1] + 5 + (targetAssocCount * 5));
@@ -344,15 +375,12 @@ public class ClassDiagram extends JPanel{
 					g.drawLine(targetPoints[1].x, targetPoints[1].y, targetPoints[2].x, targetPoints[2].y);
 					g.drawLine(targetPoints[2].x, targetPoints[2].y, targetPoints[3].x, targetPoints[3].y);
 					
-					
 					g.drawLine(targetPoints[3].x, targetPoints[3].y, sourcePoints[3].x, sourcePoints[3].y);
-					
-					
-
 					
 					leftAssocCount++;
 				}
 				drawnRelations.add(r);
+				g.setColor(Color.BLACK);
 			}
 		}
 	}
