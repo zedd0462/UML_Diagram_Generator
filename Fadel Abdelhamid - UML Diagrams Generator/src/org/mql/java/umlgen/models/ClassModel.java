@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
@@ -121,7 +123,16 @@ public class ClassModel implements Model, Entity{
 		//adding relations for fields of classes that exists in current project
 		for (Field f : pendingFields) {
 			Class<?> fieldType = f.getType();
-			//TODO: add support for collections.
+			if(fieldType.isArray()) {
+				fieldType = fieldType.arrayType();
+			}else if(Collection.class.isAssignableFrom(fieldType)){
+				try {
+					ParameterizedType type = (ParameterizedType) f.getGenericType();
+					fieldType = (Class<?>) type.getActualTypeArguments()[0];
+				} catch (Exception e) {
+					fieldType = Object.class;
+				}
+			}
 			if(projectContext.isLoaded(fieldType.getName())) {
 				RelationModel newRelation = new RelationModel(this, projectContext.getLoadedEntity(fieldType.getName()), RelationModel.ASSOCIATION);
 				relations.add(newRelation);
