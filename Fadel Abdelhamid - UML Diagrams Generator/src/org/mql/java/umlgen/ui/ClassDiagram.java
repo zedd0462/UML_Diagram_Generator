@@ -319,7 +319,7 @@ public class ClassDiagram extends JPanel{
 					Point[] p = new Point[6];
 					p[0] = new Point(sourceCoordinates[0], sourceCoordinates[1] + 5 + (sourceAssocCount * 5));
 					p[1] = new Point(p[0].x - 20 + (sourceAssocCount * 3), p[0].y);
-					p[2] = new Point(p[1].x, p[1].y - 30 - (classLevelRelationCount.get(sourceLevel) * 3));
+					p[2] = new Point(p[1].x, p[1].y - 25 - (classLevelRelationCount.get(sourceLevel) * 3));
 					p[5] = new Point(targetCoordinates[0], targetCoordinates[1] + 5 + (targetAssocCount * 5));
 					p[4] = new Point(p[5].x - 20 + (targetAssocCount * 3), p[5].y);
 					p[3] = new Point(p[4].x, p[2].y);
